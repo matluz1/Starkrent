@@ -1,0 +1,81 @@
+body {
+  margin: 0;
+  font-family: 'Sintony', 'Segoe UI', 'Oxygen', 'Ubuntu', 'Cantarell',
+    'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+  font-family: 'Sintony';
+  font-weight: normal;
+  color: #ffffff;
+  background-color: #36314d;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+*:focus-visible {
+  outline: 2rem solid #8983d2;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+img,
+svg {
+  pointer-events: none;
+  user-select: none;
+}
+
+input:focus-visible {
+  outline: 2rem solid #8983d2;
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  background-color: transparent;
+  font-family: 'Sintony';
+  font-weight: normal;
+  font-size: 100%;
+  padding: 0;
+  user-select: none;
+}
+
+input {
+  border: none;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  margin: 0;
+  font-family: 'Sintony';
+  font-weight: normal;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+  display: block;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+}
+
+li {
+  list-style-type: none;
+}
+
+@media (prefers-color-scheme: dark) {
+  html {
+    color-scheme: dark;
+  }
+  body {
+    color: white;
+    background: black;
+  }
+}
