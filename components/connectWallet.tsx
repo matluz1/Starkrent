@@ -14,7 +14,6 @@ const buttonStyle = {
 function ConnectWallet() {
   const { account, address, status } = useAccount();
   const { connect, connectors } = useConnectors();
-  console.log(connectors);
 
   return status === 'disconnected' ? (
     <button style={buttonStyle} onClick={() => connect(connectors[1])}>
