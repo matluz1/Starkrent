@@ -1,0 +1,41 @@
+.rent {
+  padding: 2rem;
+
+  .collectionWrapper {
+    .collection {
+      background-color: #262236;
+      width: 25rem;
+      padding-top: 2rem;
+      border-radius: 0.5rem;
+
+      .collectionHeader {
+        display: flex;
+        gap: 1rem;
+        align-items: center;
+        margin-left: 2rem;
+
+        .profileImage {
+          border: 2px solid white;
+          border-radius: 0.4rem;
+        }
+      }
+
+      .collectionContent {
+        margin: 0 2rem;
+
+        .socials {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          gap: 1rem;
+        }
+      }
+
+      .toggleContent {
+        background: #1f1b2d;
+        width: 100%;
+        border-radius: 0 0 0.5rem 0.5rem;
+      }
+    }
+  }
+}
