@@ -8,6 +8,13 @@ import { useRouter } from 'next/router';
 import { StarknetConfig, InjectedConnector } from '@starknet-react/core';
 import ConnectWallet from '../components/connectWallet';
 import type { AppProps } from 'next/app';
+// import { Sintony } from '@next/font/google';
+
+// const sintony = Sintony({
+//   weight: '400',
+//   preload: true,
+//   subsets: ['latin']
+// });
 
 export default function App({ Component, pageProps }: AppProps) {
   const router = useRouter();
@@ -20,16 +27,6 @@ export default function App({ Component, pageProps }: AppProps) {
     return (
       <Head>
         <title>Starkrent</title>
-        <meta
-          name="description"
-          content="The FIRST and BEST renting protocol on STARKNET"
-        />
-        <link rel="icon" href="/favicon.ico" />
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link
-          href="https://fonts.googleapis.com/css2?family=Sintony&display=swap"
-          rel="stylesheet"
-        />
       </Head>
     );
   }
