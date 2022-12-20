@@ -43,6 +43,10 @@ button {
   color: #ffffff;
 }
 
+button:hover {
+  background-image: linear-gradient(rgb(0 0 0/10%) 0 0);
+}
+
 input {
   border: none;
 }

@@ -1,18 +1,33 @@
 .rent {
-  padding: 2rem;
+  padding: 1.4rem;
+
+  h1 {
+    font-size: 1.4rem;
+    margin-bottom: 4rem;
+    text-align: center;
+  }
 
   .collectionWrapper {
-    .collection {
-      background-color: #262236;
-      width: 25rem;
-      padding-top: 2rem;
-      border-radius: 0.5rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr));
+    gap: 1.4rem;
 
-      .collectionHeader {
+    .collection {
+      width: 30rem;
+      margin: 0 auto;
+
+      .collectionTitle {
         display: flex;
         gap: 1rem;
         align-items: center;
-        margin-left: 2rem;
+        width: 100%;
+        padding: 1.4rem;
+        background-color: #262236;
+        border-radius: 0.5rem 0.5rem 0 0;
+
+        h3 {
+          font-size: 1rem;
+        }
 
         .profileImage {
           border: 2px solid white;
@@ -20,21 +35,31 @@
         }
       }
 
-      .collectionContent {
-        margin: 0 2rem;
+      .collectionDescription {
+        color: #d4d0e2;
+        background-color: #1f1b2d;
+        padding: 1.4rem;
+        font-size: 0.8rem;
+        border-top: 1px solid #151221;
 
         .socials {
           display: flex;
           justify-content: center;
           align-items: center;
           gap: 1rem;
+          margin-top: 1rem;
         }
       }
 
-      .toggleContent {
-        background: #1f1b2d;
+      .toggleDescription {
+        background-color: #181524;
         width: 100%;
+        border-top: 1px solid #100e1a;
         border-radius: 0 0 0.5rem 0.5rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0.7rem;
       }
     }
   }
