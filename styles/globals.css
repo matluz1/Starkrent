@@ -84,3 +84,9 @@ li {
     background: black;
   }
 }
+
+@media (max-width: 1930px) {
+  html {
+    font-size: 0.9rem;
+  }
+}
