@@ -1,3 +1,9 @@
+html {
+  /* Prevent scroll-bar from adding-up to the width of page*/
+  width: 100vw;
+  overflow-x: hidden;
+}
+
 body {
   margin: 0;
   font-family: 'Sintony', 'Segoe UI', 'Oxygen', 'Ubuntu', 'Cantarell',
@@ -73,6 +79,23 @@ ul {
 
 li {
   list-style-type: none;
+}
+
+::-webkit-scrollbar {
+  width: 7px;
+}
+
+::-webkit-scrollbar-track {
+  background: none;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #f5f5f5;
+  border-radius: 9999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: #c2c2c2;
 }
 
 @media (prefers-color-scheme: dark) {

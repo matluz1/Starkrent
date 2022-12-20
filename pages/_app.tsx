@@ -24,7 +24,7 @@ export default function App({ Component, pageProps }: AppProps) {
     );
   }
 
-  function getHeader() {
+  function getNav() {
     return (
       <nav className={styles.nav}>
         <ul>
@@ -73,8 +73,10 @@ export default function App({ Component, pageProps }: AppProps) {
     ) : (
       <>
         {getHead()}
-        {getHeader()}
-        <Component {...pageProps} />
+        {getNav()}
+        <main>
+          <Component {...pageProps} />
+        </main>
       </>
     );
   }
