@@ -9,7 +9,7 @@ const toggleDescriptionButtonSize = 12;
 
 interface Collection {
   name: string;
-  icon: string;
+  profileImage: string;
   description: string;
   showingDescription?: boolean;
   address: string;
@@ -93,7 +93,7 @@ function Rent() {
             >
               <Image
                 className={styles.profileImage}
-                src="/placeholder.png"
+                src={collectionInfo.profileImage}
                 alt="Collection name"
                 width={70}
                 height={70}
