@@ -7,10 +7,12 @@ import Image from 'next/image';
 import { useRouter } from 'next/router';
 import { StarknetConfig, InjectedConnector } from '@starknet-react/core';
 import ConnectWallet from '../components/connectWallet';
+import { QueryClient, QueryClientProvider, useQuery } from 'react-query'
 import type { AppProps } from 'next/app';
 
 export default function App({ Component, pageProps }: AppProps) {
   const router = useRouter();
+  const queryClient = new QueryClient();
   const connectors = [
     new InjectedConnector({ options: { id: 'braavos' } }),
     new InjectedConnector({ options: { id: 'argentX' } }),
@@ -33,8 +35,8 @@ export default function App({ Component, pageProps }: AppProps) {
               <Image
                 src="/logo.svg"
                 alt="Starkrent lion logo"
-                width={80}
-                height={80}
+                width={60}
+                height={60}
               />
             </Link>
           </li>
@@ -75,7 +77,9 @@ export default function App({ Component, pageProps }: AppProps) {
         {getHead()}
         {getNav()}
         <main>
+        <QueryClientProvider client={queryClient}>
           <Component {...pageProps} />
+        </QueryClientProvider>
         </main>
       </>
     );
