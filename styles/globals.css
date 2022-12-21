@@ -19,7 +19,7 @@ body {
 }
 
 *:focus-visible {
-  outline: 2rem solid #8983d2;
+  outline: 2px solid #8983d2;
 }
 
 code {
@@ -34,7 +34,7 @@ svg {
 }
 
 input:focus-visible {
-  outline: 2rem solid #8983d2;
+  outline: 2px solid #8983d2;
 }
 
 button {
