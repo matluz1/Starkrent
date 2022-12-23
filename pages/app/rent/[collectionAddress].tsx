@@ -12,6 +12,7 @@ export default function Page() {
         alt="Starkrent lion logo"
         width={60}
         height={60}
+        unoptimized //reason for the 'unoptimized': https://github.com/vercel/next.js/issues/42032
       />
     </p>
   );
