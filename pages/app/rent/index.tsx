@@ -8,11 +8,15 @@ const socialIconSize = 20;
 const toggleDescriptionButtonSize = 12;
 
 interface Collection {
+  address: string;
+  info: CollectionInfo;
+}
+
+interface CollectionInfo {
   name: string;
   profileImage: string;
   description: string;
   showingDescription?: boolean;
-  address: string;
   twitter?: string;
   discord?: string;
   medium?: string;
@@ -24,13 +28,13 @@ type showDescriptionState = {
 
 const collectionArray: Collection[] = collections;
 
-function getCollectionDescription(collectionInfo: Collection) {
+function getCollectionDescription(collection: Collection) {
   return (
     <div className={styles.collectionDescription}>
-      <span>{collectionInfo.description}</span>
+      <span>{collection.info.description}</span>
       <div className={styles.socials}>
-        {collectionInfo.twitter && (
-          <a href={collectionInfo.twitter} target="blank">
+        {collection.info.twitter && (
+          <a href={collection.info.twitter} target="blank">
             <Image
               src="/twitter.svg"
               alt="Twitter icon"
@@ -39,8 +43,8 @@ function getCollectionDescription(collectionInfo: Collection) {
             />
           </a>
         )}
-        {collectionInfo.discord && (
-          <a href={collectionInfo.discord} target="blank">
+        {collection.info.discord && (
+          <a href={collection.info.discord} target="blank">
             <Image
               src="/discord.svg"
               alt="Discord icon"
@@ -49,8 +53,8 @@ function getCollectionDescription(collectionInfo: Collection) {
             />
           </a>
         )}
-        {collectionInfo.medium && (
-          <a href={collectionInfo.medium} target="blank">
+        {collection.info.medium && (
+          <a href={collection.info.medium} target="blank">
             <Image
               src="/medium.svg"
               alt="Medium icon"
@@ -85,28 +89,28 @@ function Rent() {
     <section className={styles.rent}>
       <h1>Select your Collection</h1>
       <div className={styles.collectionWrapper}>
-        {collectionArray.map((collectionInfo) => (
-          <div className={styles.collection} key={collectionInfo.address}>
+        {collectionArray.map((collection) => (
+          <div className={styles.collection} key={collection.address}>
             <button
               className={styles.collectionTitle}
-              onClick={() => handleClick(collectionInfo.address)}
+              onClick={() => handleClick(collection.address)}
             >
               <Image
                 className={styles.profileImage}
-                src={collectionInfo.profileImage}
+                src={collection.info.profileImage}
                 alt="Collection name"
                 width={70}
                 height={70}
               />
-              <h3>{collectionInfo.name}</h3>
+              <h3>{collection.info.name}</h3>
             </button>
-            {showDescription[collectionInfo.address] &&
-              getCollectionDescription(collectionInfo)}
+            {showDescription[collection.address] &&
+              getCollectionDescription(collection)}
             <button
               className={styles.toggleDescription}
-              onClick={() => toggleDescription(collectionInfo.address)}
+              onClick={() => toggleDescription(collection.address)}
             >
-              {showDescription[collectionInfo.address] ? (
+              {showDescription[collection.address] ? (
                 <Image
                   src="/minus.svg"
                   alt="Show less"
