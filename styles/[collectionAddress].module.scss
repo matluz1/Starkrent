@@ -1,0 +1,20 @@
+.collectionItemWrapper {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr));
+  gap: 1.4rem;
+
+  .collectionItem {
+    width: 15rem;
+
+    .itemImage {
+      img {
+        width: 100%;
+        height: 100%;
+      }
+    }
+
+    .itemInfo {
+      background-color: #262236;
+    }
+  }
+}
