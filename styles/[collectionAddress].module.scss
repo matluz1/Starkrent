@@ -1,10 +1,12 @@
 .collectionItemWrapper {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr));
-  gap: 1.4rem;
+  grid-template-columns: repeat(auto-fit, minmax(30em, 1fr));
+  gap: 1.4em;
 
   .collectionItem {
-    width: 15rem;
+    width: 15em;
+    margin: 0 auto;
+    font-size: 0.8em;
 
     .itemImage {
       img {
@@ -15,6 +17,41 @@
 
     .itemInfo {
       background-color: #262236;
+      padding: 1em;
+      border-radius: 0 0 0.5em 0.5em;
+
+      .name {
+        text-align: center;
+        padding: 0.5em;
+        margin-bottom: 1.5em;
+      }
+
+      .collateral,
+      .dailyTax {
+        display: inline-block;
+        width: 50%;
+        text-align: center;
+
+        .collateralValue,
+        .dailyTaxValue {
+          display: flex;
+          justify-content: center;
+          gap: 0.3em;
+          align-items: center;
+          font-size: 1.2em;
+
+          img {
+            margin-bottom: 1px;
+            width: 1em;
+            height: 1em;
+          }
+        }
+
+        .collateralLabel,
+        .dailyTaxLabel {
+          color: #716c86;
+        }
+      }
     }
   }
 }

@@ -12,7 +12,7 @@ export default function Page() {
       {/* {collectionAddress} */}
       <div className={styles.collectionItemWrapper}>
         {rentPlaceholder.map((item) => (
-          <div className={styles.collectionItem}>
+          <div className={styles.collectionItem} key={item.id}>
             <div className={styles.itemImage}>
               <Image
                 src={item.info.image}
@@ -24,16 +24,30 @@ export default function Page() {
             </div>
             <div className={styles.itemInfo}>
               <div className={styles.name}>
-                <span className={styles.nameValue}>
-                  {item.info.name}
-                </span>
+                <span className={styles.nameValue}>{item.info.name}</span>
               </div>
               <div className={styles.collateral}>
-                <span className={styles.collateralValue}>0.01</span>
+                <div className={styles.collateralValue}>
+                  <span>15</span>
+                  <Image
+                    src="/ethereum.svg"
+                    alt="Ethereum logo"
+                    width={15}
+                    height={15}
+                  />
+                </div>
                 <span className={styles.collateralLabel}>Collateral</span>
               </div>
               <div className={styles.dailyTax}>
-                <span className={styles.dailyTaxValue}>0.01</span>
+                <div className={styles.collateralValue}>
+                  <span>0.01</span>
+                  <Image
+                    src="/ethereum.svg"
+                    alt="Ethereum logo"
+                    width={15}
+                    height={15}
+                  />
+                </div>
                 <span className={styles.dailyTaxLabel}>Daily Tax</span>
               </div>
             </div>
