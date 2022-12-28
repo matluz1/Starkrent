@@ -7,6 +7,7 @@ const collections = [
       profileImage: '/starknetid.jpg',
       description: 'Identity and naming service for StarkNet',
       twitter: 'https://twitter.com/Starknet_id',
+      fullImageItems: false,
     },
   },
   {
@@ -19,6 +20,7 @@ const collections = [
 
       discord: 'https://discord.com/anothercollection',
       medium: 'https://medium.com/anothercollection',
+      fullImageItems: true,
     },
   },
   {
@@ -31,6 +33,7 @@ const collections = [
 
       twitter: 'https://twitter.com/yetanothercollection',
       discord: 'https://discord.com/yetanothercollection',
+      fullImageItems: true,
     },
   },
   {
@@ -40,8 +43,8 @@ const collections = [
       profileImage: '/placeholder.png',
       description:
         'Proin fringilla ultricies convallis. Praesent orci neque, laoreet ornare blandit et, volutpat quis massa. Ut scelerisque, sem vel convallis bibendum, diam est gravida sem, at tristique dui massa sed sem. Vivamus non bibendum neque. Sed congue, augue in faucibus rhoncus, elit nunc tincidunt nisi, non.',
-
       twitter: 'https://twitter.com/mycollection4',
+      fullImageItems: true,
     },
   },
   {
@@ -54,6 +57,7 @@ const collections = [
       twitter: 'https://twitter.com/anothercollection5',
       discord: 'https://discord.com/anothercollection5',
       medium: 'https://medium.com/anothercollection5',
+      fullImageItems: true,
     },
   },
   {
@@ -65,6 +69,7 @@ const collections = [
 
       twitter: 'https://twitter.com/yetanothercollection6',
       discord: 'https://discord.com/yetanothercollection6',
+      fullImageItems: true,
     },
   },
 ];
