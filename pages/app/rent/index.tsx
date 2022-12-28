@@ -4,9 +4,6 @@ import Image from 'next/image';
 import styles from '../../../styles/Rent.module.scss';
 import collections from '../../../components/placeholder/collections';
 
-const socialIconSize = 20;
-const toggleDescriptionButtonSize = 12;
-
 interface Collection {
   address: string;
   info: CollectionInfo;
@@ -26,9 +23,10 @@ type showDescriptionState = {
   [address: string]: boolean;
 };
 
-const collectionArray: Collection[] = collections;
-
 function getCollectionDescription(collection: Collection) {
+
+  const socialIconSize = 20;
+
   return (
     <div className={styles.collectionDescription}>
       <span>{collection.info.description}</span>
@@ -70,6 +68,8 @@ function getCollectionDescription(collection: Collection) {
 
 function Rent() {
   const router = useRouter();
+  const collectionArray: Collection[] = collections;
+  const toggleDescriptionButtonSize = 12;
   const [showDescription, setShowDescription] = useState<showDescriptionState>(
     {},
   );
