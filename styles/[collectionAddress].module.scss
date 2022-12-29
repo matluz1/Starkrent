@@ -1,7 +1,7 @@
 .collectionItemWrapper {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(30em, 1fr));
-  gap: 1.4em;
+  grid-template-columns: repeat(auto-fit, minmax(11em, 1fr));
+  gap: 3em;
 
   .collectionItem {
     width: 15em;
@@ -9,6 +9,17 @@
     font-size: 0.8em;
 
     .itemImage {
+      border: 1px solid #2e2940;
+      padding: 0.6em;
+      background-color: #322d47;
+      border-radius: 0.5em 0.5em 0 0;
+
+      &.fullImage {
+        border: none;
+        padding: 0;
+        background-color: inherit;
+      }
+
       img {
         width: 100%;
         height: 100%;

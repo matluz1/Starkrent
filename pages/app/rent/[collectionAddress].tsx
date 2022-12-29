@@ -2,18 +2,20 @@ import Image from 'next/image';
 import { useRouter } from 'next/router';
 import styles from '../../../styles/[collectionAddress].module.scss';
 import rentPlaceholder from '../../../components/placeholder/starknetidRentPlaceholder';
+import collections from '../../../components/placeholder/collections';
 
 export default function Page() {
   const router = useRouter();
   const { collectionAddress } = router.query;
 
+  const fullImage = collections.find((item) => item.address === collectionAddress)?.info.fullImageItems;
+
   return (
     <>
-      {/* {collectionAddress} */}
       <div className={styles.collectionItemWrapper}>
         {rentPlaceholder.map((item) => (
           <div className={styles.collectionItem} key={item.id}>
-            <div className={styles.itemImage}>
+            <div className={fullImage ? `${styles.itemImage} ${styles.fullImage}` : styles.itemImage}>
               <Image
                 src={item.info.image}
                 alt={item.info.description}
