@@ -8,9 +8,9 @@ export default function Page() {
   const router = useRouter();
   const { collectionAddress } = router.query;
 
-  const fullImage = collections.find(
+  const notFullImage = collections.find(
     (item) => item.address === collectionAddress,
-  )?.info.fullImageItems;
+  )?.info.notFullImageItems;
 
   return (
     <>
@@ -19,8 +19,8 @@ export default function Page() {
           <button className={styles.collectionItem} key={item.id}>
             <div
               className={
-                fullImage
-                  ? `${styles.itemImage} ${styles.fullImage}`
+                notFullImage
+                  ? `${styles.itemImage} ${styles.notFullImage}`
                   : styles.itemImage
               }
             >

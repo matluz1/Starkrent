@@ -18,15 +18,12 @@
     }
 
     .itemImage {
-      border: 1px solid #2e2940;
-      padding: 0.6em;
-      background-color: #322d47;
       border-radius: 0.5em 0.5em 0 0;
 
-      &.fullImage {
-        border: none;
-        padding: 0;
-        background-color: inherit;
+      &.notFullImage {
+        border: 1px solid #2e2940;
+        padding: 0.6em;
+        background-color: #322d47;
       }
 
       img {
