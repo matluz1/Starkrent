@@ -8,14 +8,22 @@ export default function Page() {
   const router = useRouter();
   const { collectionAddress } = router.query;
 
-  const fullImage = collections.find((item) => item.address === collectionAddress)?.info.fullImageItems;
+  const fullImage = collections.find(
+    (item) => item.address === collectionAddress,
+  )?.info.fullImageItems;
 
   return (
     <>
       <div className={styles.collectionItemWrapper}>
         {rentPlaceholder.map((item) => (
           <div className={styles.collectionItem} key={item.id}>
-            <div className={fullImage ? `${styles.itemImage} ${styles.fullImage}` : styles.itemImage}>
+            <div
+              className={
+                fullImage
+                  ? `${styles.itemImage} ${styles.fullImage}`
+                  : styles.itemImage
+              }
+            >
               <Image
                 src={item.info.image}
                 alt={item.info.description}

@@ -24,7 +24,6 @@ type showDescriptionState = {
 };
 
 function getCollectionDescription(collection: Collection) {
-
   const socialIconSize = 20;
 
   return (

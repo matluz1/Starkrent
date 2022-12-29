@@ -31,9 +31,6 @@ const rentPlaceholder = [
       image: 'https://starknet.id/api/identicons/261880110824',
     },
   },
-  
-
-
 
   {
     id: '151714533694',
