@@ -16,7 +16,7 @@ export default function Page() {
     <>
       <div className={styles.collectionItemWrapper}>
         {rentPlaceholder.map((item) => (
-          <div className={styles.collectionItem} key={item.id}>
+          <button className={styles.collectionItem} key={item.id}>
             <div
               className={
                 fullImage
@@ -61,7 +61,7 @@ export default function Page() {
                 <span className={styles.dailyTaxLabel}>Daily Tax</span>
               </div>
             </div>
-          </div>
+          </button>
         ))}
       </div>
     </>
