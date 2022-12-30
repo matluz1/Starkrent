@@ -23,7 +23,7 @@ type showDescriptionState = {
   [address: string]: boolean;
 };
 
-export default function getCollectionDescription(collection: Collection) {
+function getCollectionDescription(collection: Collection) {
   const socialIconSize = 20;
 
   return (
@@ -65,7 +65,7 @@ export default function getCollectionDescription(collection: Collection) {
   );
 }
 
-function Rent() {
+export default function Rent() {
   const router = useRouter();
   const collectionArray: Collection[] = collections;
   const toggleDescriptionButtonSize = 12;
