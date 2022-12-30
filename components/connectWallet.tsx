@@ -11,7 +11,7 @@ const buttonStyle = {
   padding: '.8rem 1.5rem',
 };
 
-function ConnectWallet() {
+export default function ConnectWallet() {
   const { account, address, status } = useAccount();
   const { connect, connectors } = useConnectors();
 
@@ -23,5 +23,3 @@ function ConnectWallet() {
     <span>Account: {address}</span>
   );
 }
-
-export default ConnectWallet;

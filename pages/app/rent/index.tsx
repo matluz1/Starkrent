@@ -23,7 +23,7 @@ type showDescriptionState = {
   [address: string]: boolean;
 };
 
-function getCollectionDescription(collection: Collection) {
+export default function getCollectionDescription(collection: Collection) {
   const socialIconSize = 20;
 
   return (
@@ -132,4 +132,3 @@ function Rent() {
   );
 }
 
-export default Rent;

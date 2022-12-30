@@ -1,6 +1,6 @@
 import { useRouter } from 'next/router';
 
-const Home = () => {
+export default function Profile() {
   const router = useRouter();
 
   return (
@@ -10,5 +10,3 @@ const Home = () => {
     </div>
   );
 };
-
-export default Home;
