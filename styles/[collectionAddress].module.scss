@@ -17,56 +17,57 @@
       }
     }
 
-    .itemImage {
-      border-radius: 0.5em 0.5em 0 0;
+    .itemContent {
+      .itemImage {
+        border-radius: 0.5em 0.5em 0 0;
 
-      &.notFullImage {
-        border: 1px solid #2e2940;
-        padding: 0.6em;
-        background-color: #322d47;
-      }
-
-      img {
-        width: 100%;
-        height: 100%;
-      }
-    }
-
-    .itemInfo {
-      background-color: #262236;
-      padding: 1em;
-      border-radius: 0 0 0.5em 0.5em;
-
-      .name {
-        text-align: center;
-        padding: 0.5em;
-        margin-bottom: 1.5em;
-      }
-
-      .collateral,
-      .dailyTax {
-        display: inline-block;
-        width: 50%;
-        text-align: center;
-
-        .collateralValue,
-        .dailyTaxValue {
-          display: flex;
-          justify-content: center;
-          gap: 0.3em;
-          align-items: center;
-          font-size: 1.2em;
-
-          img {
-            margin-bottom: 1px;
-            width: 1em;
-            height: 1em;
-          }
+        &.notFullImage {
+          border: 1px solid #2e2940;
+          padding: 0.6em;
+          background-color: #322d47;
         }
 
-        .collateralLabel,
-        .dailyTaxLabel {
-          color: #716c86;
+        img {
+          width: 100%;
+          height: 100%;
+        }
+      }
+
+      .itemInfo {
+        background-color: #262236;
+        padding: 1em;
+
+        .name {
+          text-align: center;
+          padding: 0.5em;
+          margin-bottom: 1.5em;
+        }
+
+        .collateral,
+        .dailyTax {
+          display: inline-block;
+          width: 50%;
+          text-align: center;
+
+          .collateralValue,
+          .dailyTaxValue {
+            display: flex;
+            justify-content: center;
+            gap: 0.3em;
+            align-items: center;
+            font-size: 1.2em;
+
+            img {
+              margin-bottom: 1px;
+              width: 1em;
+              height: 1em;
+            }
+          }
+
+          .collateralLabel,
+          .dailyTaxLabel {
+            color: #716c86;
+          }
         }
       }
     }
