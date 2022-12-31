@@ -7,6 +7,7 @@ import collections from '../../../components/placeholder/collections';
 export default function Page() {
   const router = useRouter();
   const { collectionAddress } = router.query;
+  const ethIconSize = 15;
 
   const notFullImage = collections.find(
     (item) => item.address === collectionAddress,
@@ -43,8 +44,8 @@ export default function Page() {
                     <Image
                       src="/ethereum.svg"
                       alt="Ethereum logo"
-                      width={15}
-                      height={15}
+                      width={ethIconSize}
+                      height={ethIconSize}
                     />
                   </div>
                   <span className={styles.collateralLabel}>Collateral</span>
@@ -55,8 +56,8 @@ export default function Page() {
                     <Image
                       src="/ethereum.svg"
                       alt="Ethereum logo"
-                      width={15}
-                      height={15}
+                      width={ethIconSize}
+                      height={ethIconSize}
                     />
                   </div>
                   <span className={styles.dailyTaxLabel}>Daily Tax</span>
