@@ -7,6 +7,7 @@
     width: 15em;
     margin: 0 auto;
     font-size: 0.8em;
+    position: relative;
 
     &:hover {
       overflow: hidden;
@@ -15,14 +16,18 @@
         transform: scale(1.1);
         transition: all 0.4s ease;
       }
+
+      .borrow {
+        display: block;
+      }
     }
 
     .itemContent {
       .itemImage {
         border-radius: 0.5em 0.5em 0 0;
+        border: 1px solid #2e2940;
 
         &.notFullImage {
-          border: 1px solid #2e2940;
           padding: 0.6em;
           background-color: #322d47;
         }
@@ -67,8 +72,41 @@
           .collateralLabel,
           .dailyTaxLabel {
             color: #716c86;
+            font-size: 0.8em;
           }
         }
+      }
+    }
+
+    .borrow {
+      display: none;
+      height: 3em;
+      background-color: #a420e2;
+      width: 100%;
+      position: absolute;
+      z-index: 1;
+      transform: translateX(-50%);
+      left: 50%;
+      bottom: 0;
+      border-radius: 0 0 0.5em 0.5em;
+      border: 0.2em solid #262236;
+
+      span {
+        font-size: 1em;
+      }
+    }
+
+    .dayMinMax {
+      height: 3em;
+      background-color: #262236;
+      color: #716c86;
+      border-radius: 0 0 0.5em 0.5em;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      span {
+        font-size: 0.8em;
       }
     }
   }
