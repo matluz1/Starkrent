@@ -86,7 +86,7 @@ export default function Rent() {
 
   return (
     <section className={styles.rent}>
-      <h1>Select your Collection</h1>
+      <h1>Select the Collection</h1>
       <div className={styles.collectionWrapper}>
         {collectionArray.map((collection) => (
           <div className={styles.collection} key={collection.address}>
