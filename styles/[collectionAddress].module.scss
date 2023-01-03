@@ -12,9 +12,13 @@
     &:hover {
       overflow: hidden;
 
-      .itemImage img {
-        transform: scale(1.1);
-        transition: all 0.4s ease;
+      .itemContent {
+        background-image: linear-gradient(rgb(0 0 0/15%) 0 0);
+
+        .itemImage img {
+          transform: scale(1.1);
+          transition: all 0.4s ease;
+        }
       }
 
       .borrow {
