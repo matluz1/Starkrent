@@ -21,6 +21,10 @@
     li:first-child {
       margin-right: auto;
       width: 10.2rem;
+
+      a {
+        width: min-content;
+      }
     }
 
     button {
