@@ -1,6 +1,5 @@
 import { useAccount } from '@starknet-react/core';
 import { useConnectors } from '@starknet-react/core';
-import React from 'react';
 
 const buttonStyle = {
   marginLeft: 'auto',

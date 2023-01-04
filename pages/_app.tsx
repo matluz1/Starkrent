@@ -1,4 +1,3 @@
-import React from 'react';
 import '../styles/globals.css';
 import styles from '../styles/Nav.module.scss';
 import Head from 'next/head';
