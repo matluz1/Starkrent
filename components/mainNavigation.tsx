@@ -4,7 +4,7 @@ import styles from '../styles/Nav.module.scss';
 import ConnectWallet from './connectWallet';
 import { useRouter } from 'next/router';
 
-export default function mainNavigation() {
+export default function MainNavigation() {
   const router = useRouter();
 
   return (
