@@ -1,5 +1,6 @@
 import Image from 'next/image';
 import { useRouter } from 'next/router';
+import { useStarknetExecute } from '@starknet-react/core';
 import styles from '../../../styles/[collectionAddress].module.scss';
 import rentPlaceholder from '../../../components/placeholder/starknetidRentPlaceholder';
 import collections from '../../../components/placeholder/collections';
@@ -12,6 +13,16 @@ export default function Page() {
   const notFullImage = collections.find(
     (item) => item.address === collectionAddress,
   )?.info.notFullImageItems;
+
+
+  //run reset_counter method from https://github.com/starknet-edu/starknet-cairo-101/blob/main/contracts/ex03.cairo
+  const calls = [{
+    contractAddress: '0x79275e734d50d7122ef37bb939220a44d0b1ad5d8e92be9cdb043d85ec85e24',
+    entrypoint: 'reset_counter',
+    calldata: [],
+  }]
+
+  const { execute } = useStarknetExecute({ calls })
 
   return (
     <>
@@ -64,10 +75,7 @@ export default function Page() {
                 </div>
               </div>
             </button>
-            <button
-              className={styles.borrow}
-              onClick={() => console.log(item.id)}
-            >
+            <button className={styles.borrow} onClick={() => execute()}>
               <span>Borrow</span>
             </button>
             <div className={styles.dayMinMax}>
