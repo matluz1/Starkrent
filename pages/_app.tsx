@@ -16,9 +16,7 @@ export default function App({ Component, pageProps }: AppProps) {
   }
 
   function getNav() {
-    return (
-      <Navigation />
-    );
+    return <Navigation />;
   }
 
   function getPageContent() {
