@@ -12,13 +12,9 @@
     &:hover {
       overflow: hidden;
 
-      .itemContent {
-        background-image: linear-gradient(rgb(0 0 0/15%) 0 0);
-
-        .itemImage img {
-          transform: scale(1.1);
-          transition: all 0.4s ease;
-        }
+      .itemImage img {
+        transform: scale(1.1);
+        transition: all 0.4s ease;
       }
 
       .borrow {
@@ -88,15 +84,21 @@
     .borrow {
       display: none;
       height: 3em;
-      background-color: #a420e2;
+      background-color: rgb(134,49,173);
+      background-image: linear-gradient(90deg, rgba(134,49,173,1) 0%, rgba(164,32,226,1) 100%);
       width: 100%;
       position: absolute;
       z-index: 1;
       transform: translateX(-50%);
       left: 50%;
       bottom: 0;
-      border-radius: 0 0 0.5em 0.5em;
+      border-radius: 0.5em 0.5em;
       border: 0.2em solid #262236;
+
+      &:hover {
+        background-color: rgb(124,46,159);
+        background-image: linear-gradient(90deg, rgba(124,46,159,1) 0%, rgba(152,31,209,1) 100%);
+      }
 
       span {
         font-size: 1em;
