@@ -3,14 +3,9 @@ import Image from 'next/image';
 import styles from '../styles/Nav.module.scss';
 import ConnectWallet from './connectWallet';
 import { useRouter } from 'next/router';
-import { StarknetConfig, InjectedConnector } from '@starknet-react/core';
 
 export default function mainNavigation() {
   const router = useRouter();
-  const connectors = [
-    new InjectedConnector({ options: { id: 'braavos' } }),
-    new InjectedConnector({ options: { id: 'argentX' } }),
-  ];
 
   return (
     <nav className={styles.nav}>
@@ -43,9 +38,7 @@ export default function mainNavigation() {
         >
           <Link href="/app/profile">Profile</Link>
         </li>
-        <StarknetConfig connectors={connectors}>
           <ConnectWallet />
-        </StarknetConfig>
       </ul>
     </nav>
   );

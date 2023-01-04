@@ -1,13 +1,8 @@
-import { useState } from 'react';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
 import styles from '../../../styles/[collectionAddress].module.scss';
 import rentPlaceholder from '../../../components/placeholder/starknetidRentPlaceholder';
 import collections from '../../../components/placeholder/collections';
-
-type showBorrowButtonState = {
-  [id: string]: boolean;
-};
 
 export default function Page() {
   const router = useRouter();
