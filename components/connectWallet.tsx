@@ -8,7 +8,13 @@ const buttonStyle = {
   borderRadius: '15rem',
   fontSize: '.9rem',
   padding: '.8rem 1.5rem',
+  width: '10.4rem',
 };
+
+const addressStyle = {
+  marginLeft: 'auto',
+  width: '10.4rem',
+}
 
 export default function ConnectWallet() {
   const { account, address, status } = useAccount();
@@ -19,6 +25,6 @@ export default function ConnectWallet() {
       Connect ArgentX
     </button>
   ) : (
-    <span>Account: {address}</span>
+    <span style={addressStyle}>Account: {'0x' + address?.slice(2, 6) + '...' + address?.slice(-4)}</span>
   );
 }
