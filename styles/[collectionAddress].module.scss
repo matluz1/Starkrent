@@ -84,8 +84,12 @@
     .borrow {
       display: none;
       height: 3em;
-      background-color: rgb(134,49,173);
-      background-image: linear-gradient(90deg, rgba(134,49,173,1) 0%, rgba(164,32,226,1) 100%);
+      background-color: rgb(134, 49, 173);
+      background-image: linear-gradient(
+        90deg,
+        rgba(134, 49, 173, 1) 0%,
+        rgba(164, 32, 226, 1) 100%
+      );
       width: 100%;
       position: absolute;
       z-index: 1;
@@ -96,8 +100,12 @@
       border: 0.2em solid #262236;
 
       &:hover {
-        background-color: rgb(124,46,159);
-        background-image: linear-gradient(90deg, rgba(124,46,159,1) 0%, rgba(152,31,209,1) 100%);
+        background-color: rgb(124, 46, 159);
+        background-image: linear-gradient(
+          90deg,
+          rgba(124, 46, 159, 1) 0%,
+          rgba(152, 31, 209, 1) 100%
+        );
       }
 
       span {

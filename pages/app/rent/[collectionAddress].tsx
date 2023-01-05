@@ -14,15 +14,17 @@ export default function Page() {
     (item) => item.address === collectionAddress,
   )?.info.notFullImageItems;
 
-
   //run reset_counter method from https://github.com/starknet-edu/starknet-cairo-101/blob/main/contracts/ex03.cairo
-  const calls = [{
-    contractAddress: '0x79275e734d50d7122ef37bb939220a44d0b1ad5d8e92be9cdb043d85ec85e24',
-    entrypoint: 'reset_counter',
-    calldata: [],
-  }]
+  const calls = [
+    {
+      contractAddress:
+        '0x79275e734d50d7122ef37bb939220a44d0b1ad5d8e92be9cdb043d85ec85e24',
+      entrypoint: 'reset_counter',
+      calldata: [],
+    },
+  ];
 
-  const { execute } = useStarknetExecute({ calls })
+  const { execute } = useStarknetExecute({ calls });
 
   return (
     <>

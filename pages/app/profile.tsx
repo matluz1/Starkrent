@@ -9,4 +9,4 @@ export default function Profile() {
       <p>You are currently on: {router.pathname}</p>
     </div>
   );
-};
+}

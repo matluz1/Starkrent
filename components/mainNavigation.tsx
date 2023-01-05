@@ -38,7 +38,7 @@ export default function MainNavigation() {
         >
           <Link href="/app/profile">Profile</Link>
         </li>
-          <ConnectWallet />
+        <ConnectWallet />
       </ul>
     </nav>
   );
