@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { useRouter } from 'next/router';
 import Image from 'next/image';
 import styles from '../../../styles/Rent.module.scss';
-import collections from '../../../components/placeholder/collections';
+import collections from '../../../placeholder/collections';
 
 interface Collection {
   address: string;

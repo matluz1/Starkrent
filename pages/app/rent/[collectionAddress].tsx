@@ -2,8 +2,8 @@ import Image from 'next/image';
 import { useRouter } from 'next/router';
 import { useStarknetExecute } from '@starknet-react/core';
 import styles from '../../../styles/[collectionAddress].module.scss';
-import rentPlaceholder from '../../../components/placeholder/starknetidRentPlaceholder';
-import collections from '../../../components/placeholder/collections';
+import rentPlaceholder from '../../../placeholder/starknetidRentPlaceholder';
+import collections from '../../../placeholder/collections';
 
 export default function Page() {
   const router = useRouter();
