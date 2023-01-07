@@ -1,5 +1,6 @@
 import { useAccount } from '@starknet-react/core';
 import { useConnectors } from '@starknet-react/core';
+import Image from 'next/image';
 
 const buttonStyle = {
   marginLeft: 'auto',
@@ -11,22 +12,33 @@ const buttonStyle = {
   width: '10.4rem',
 };
 
-const addressStyle = {
+const disconnectWrapper = {
   marginLeft: 'auto',
-  width: '10.4rem',
+  minWidth: '10.4rem',
+  display: 'flex',
+  justifyContent: 'right',
+  alignItems: 'center',
+  gap: '.5rem',
 };
+
+function shortenAddress(address: string) {
+  return '0x' + address.slice(2, 6) + '...' + address.slice(-4);
+}
 
 export default function ConnectWallet() {
   const { account, address, status } = useAccount();
-  const { connect, connectors } = useConnectors();
+  const { connectors, connect, disconnect } = useConnectors();
 
   return status === 'disconnected' ? (
     <button style={buttonStyle} onClick={() => connect(connectors[1])}>
       Connect ArgentX
     </button>
   ) : (
-    <span style={addressStyle}>
-      Account: {'0x' + address?.slice(2, 6) + '...' + address?.slice(-4)}
-    </span>
+    <div style={disconnectWrapper}>
+      <span>{shortenAddress(address || '')}</span>
+      <button style={{ backgroundImage: 'none' }} onClick={() => disconnect()}>
+        <Image src="/x.svg" alt="Disconnect" width={12} height={12} />
+      </button>
+    </div>
   );
 }
