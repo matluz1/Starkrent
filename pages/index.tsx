@@ -22,7 +22,7 @@ export default function Home() {
             width={500}
             height={50}
           />
-          <span>The FIRST and BEST renting protocol on STARKNET</span>
+          <span>The FIRST and BEST NFT rental protocol on STARKNET</span>
         </div>
 
         <Link href="/app/rent">Launch app</Link>

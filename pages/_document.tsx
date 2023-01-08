@@ -6,7 +6,7 @@ export default function Document() {
       <Head>
         <meta
           name="description"
-          content="The FIRST and BEST renting protocol on STARKNET"
+          content="The FIRST and BEST NFT rental protocol on STARKNET"
         />
         <link rel="icon" href="/favicon.ico" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
