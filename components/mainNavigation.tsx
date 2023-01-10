@@ -15,8 +15,8 @@ export default function MainNavigation() {
             <Image
               src="/logo.svg"
               alt="Starkrent lion logo"
-              width={60}
-              height={60}
+              width={65}
+              height={65}
             />
           </Link>
         </li>
