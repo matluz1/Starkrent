@@ -112,7 +112,7 @@ const data = [
   {
     id: '995420794050',
     rentalInfo: {
-      collateral: 9,
+      collateralValue: 9,
       collateralToken: 'ETH',
       dailyTax: 0.9,
       minDays: 12,
