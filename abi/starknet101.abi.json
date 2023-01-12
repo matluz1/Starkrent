@@ -1,0 +1,131 @@
+[
+  {
+    "name": "tderc20_address",
+    "type": "function",
+    "inputs": [],
+    "outputs": [
+      {
+        "name": "_tderc20_address",
+        "type": "felt"
+      }
+    ],
+    "stateMutability": "view"
+  },
+  {
+    "name": "players_registry",
+    "type": "function",
+    "inputs": [],
+    "outputs": [
+      {
+        "name": "_players_registry",
+        "type": "felt"
+      }
+    ],
+    "stateMutability": "view"
+  },
+  {
+    "name": "workshop_id",
+    "type": "function",
+    "inputs": [],
+    "outputs": [
+      {
+        "name": "_workshop_id",
+        "type": "felt"
+      }
+    ],
+    "stateMutability": "view"
+  },
+  {
+    "name": "exercise_id",
+    "type": "function",
+    "inputs": [],
+    "outputs": [
+      {
+        "name": "_exercise_id",
+        "type": "felt"
+      }
+    ],
+    "stateMutability": "view"
+  },
+  {
+    "name": "has_validated_exercise",
+    "type": "function",
+    "inputs": [
+      {
+        "name": "account",
+        "type": "felt"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "has_validated_exercise",
+        "type": "felt"
+      }
+    ],
+    "stateMutability": "view"
+  },
+  {
+    "name": "user_counters",
+    "type": "function",
+    "inputs": [
+      {
+        "name": "account",
+        "type": "felt"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "user_counter",
+        "type": "felt"
+      }
+    ],
+    "stateMutability": "view"
+  },
+  {
+    "name": "constructor",
+    "type": "constructor",
+    "inputs": [
+      {
+        "name": "_tderc20_address",
+        "type": "felt"
+      },
+      {
+        "name": "_players_registry",
+        "type": "felt"
+      },
+      {
+        "name": "_workshop_id",
+        "type": "felt"
+      },
+      {
+        "name": "_exercise_id",
+        "type": "felt"
+      }
+    ],
+    "outputs": []
+  },
+  {
+    "name": "claim_points",
+    "type": "function",
+    "inputs": [],
+    "outputs": []
+  },
+  {
+    "name": "reset_counter",
+    "type": "function",
+    "inputs": [],
+    "outputs": []
+  },
+  {
+    "name": "increment_counter",
+    "type": "function",
+    "inputs": [],
+    "outputs": []
+  },
+  {
+    "name": "decrement_counter",
+    "type": "function",
+    "inputs": [],
+    "outputs": []
+  }
+]
