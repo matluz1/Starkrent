@@ -109,6 +109,15 @@ export default function Page() {
   return (
     <>
       <div className={styles.collectionItemWrapper}>
+        {isLoading && (
+          <Image
+            className={styles.spinner}
+            src="/spinner.svg"
+            alt="spinner"
+            width={30}
+            height={30}
+          />
+        )}
         {!isLoading &&
           nftInfoArray.map((item) => (
             <div className={styles.collectionItem} key={item.id}>
@@ -160,14 +169,14 @@ export default function Page() {
                   </div>
                 </div>
               </button>
-              <button
-                className={styles.borrow}
-                onClick={() => execute()}
-              >
+              <button className={styles.borrow} onClick={() => execute()}>
                 <span>Borrow</span>
               </button>
               <div className={styles.dayMinMax}>
-                <span>{item.rentalInfo.minDays} day min - {item.rentalInfo.maxDays} day max</span>
+                <span>
+                  {item.rentalInfo.minDays} day min - {item.rentalInfo.maxDays}
+                  day max
+                </span>
               </div>
             </div>
           ))}
