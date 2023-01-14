@@ -28,7 +28,7 @@ export default function NftCard({
   execute,
 }: Props) {
   return (
-    <div className={styles.collectionItem} key={nftInfo.id}>
+    <div className={styles.collectionItem}>
       <button className={styles.itemContent}>
         <div
           className={

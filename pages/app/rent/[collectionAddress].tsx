@@ -120,6 +120,7 @@ export default function Page() {
       {!isLoading &&
         nftInfoArray.map((element) => (
           <NftCard
+            key={element.id}
             nftInfo={element}
             notFullImage={notFullImage}
             execute={execute}
