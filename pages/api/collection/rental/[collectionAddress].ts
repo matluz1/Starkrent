@@ -1,5 +1,5 @@
 import { NextApiRequest, NextApiResponse } from 'next';
-import contractRentalPlaceholder from '../../../../placeholder/starkIdContractStarknetChain';
+import contractRentalPlaceholder from '../../../../placeholder/starkIdContractOfferStarknetChain';
 
 export default (req: NextApiRequest, res: NextApiResponse) => {
   const { collectionAddress } = req.query;

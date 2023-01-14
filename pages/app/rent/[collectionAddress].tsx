@@ -1,64 +1,40 @@
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
 import axios from 'axios';
-import { Contract, Provider } from 'starknet';
 import { useStarknetExecute } from '@starknet-react/core';
 import collections from '../../../placeholder/collections.json';
 import NftCard from '../../../components/nftCard';
 import styles from '../../../styles/[collectionAddress].module.scss';
 import Image from 'next/image';
+import getMetadata from '../../../utils/getMetadata';
 
 interface ContractRental {
-  id: string;
-  rentalInfo: {
-    collateralValue: number;
-    collateralToken: string;
-    dailyTax: number;
-    minDays: number;
-    maxDays: number;
-  };
+  owner: string;
+  collection: string;
+  tokenId: string;
+  collateral: string;
+  collateral_amount: number;
+  interest_rate: number;
+  rent_time_min: number;
+  rent_time_max: number;
+  timestamp: number;
 }
 
 interface NftInfo {
-  id: string;
-  rentalInfo: {
-    collateralValue: number;
-    collateralToken: string;
-    dailyTax: number;
-    minDays: number;
-    maxDays: number;
-  };
+  tokenId: string;
+  collateral: string;
+  collateral_amount: number;
+  interest_rate: number;
+  rent_time_min: number;
+  rent_time_max: number;
   metadata: any;
 }
 
-async function fetchData(): Promise<ContractRental[]> {
+async function fetchContractData(): Promise<ContractRental[]> {
   const contractStruct = await axios.get(
     '/api/collection/rental/0x0798e884450c19e072d6620fefdbeb7387d0453d3fd51d95f5ace1f17633d88b',
   );
   return contractStruct.data.contractRental;
-}
-
-function tokenUriCleaner(tokenUri: any) {
-  const tokenUriCleaned = tokenUri?.map((element: any) => element.words[0]);
-  const tokenUriAddress = tokenUriCleaned.map((element: number) =>
-    String.fromCharCode(element),
-  );
-  return tokenUriAddress.join('');
-}
-
-async function getMetadata(collectionAddress: string, tokenId: string) {
-  const provider = new Provider({ sequencer: { network: 'goerli-alpha' } });
-  const { abi } = await provider.getClassAt(collectionAddress);
-  if (abi === undefined) {
-    throw new Error('no abi.');
-  }
-
-  const contract = new Contract(abi, collectionAddress, provider);
-
-  const response = await contract.call('tokenURI', [[tokenId, '0']]);
-  const tokenUriAddress = tokenUriCleaner(response.tokenURI);
-  const metadata = await axios.get(tokenUriAddress);
-  return metadata.data;
 }
 
 function getExecuteMethod() {
@@ -88,12 +64,15 @@ export default function Page() {
 
   useEffect(() => {
     async function fetchAsync() {
-      const rentPlaceholder = await fetchData();
+      const rentPlaceholder = await fetchContractData();
       const collectionAddress =
         '0x0798e884450c19e072d6620fefdbeb7387d0453d3fd51d95f5ace1f17633d88b';
       const rentalAndMetadataArray = await Promise.all(
         rentPlaceholder.map(async (element) => {
-          const metadata = await getMetadata(collectionAddress, element.id);
+          const metadata = await getMetadata(
+            collectionAddress,
+            element.tokenId,
+          );
           return { ...element, metadata };
         }),
       );
@@ -120,7 +99,7 @@ export default function Page() {
       {!isLoading &&
         nftInfoArray.map((element) => (
           <NftCard
-            key={element.id}
+            key={element.tokenId}
             nftInfo={element}
             notFullImage={notFullImage}
             execute={execute}

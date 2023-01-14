@@ -3,14 +3,12 @@ import Image from 'next/image';
 import styles from '../styles/NftCard.module.scss';
 
 interface NftInfo {
-  id: string;
-  rentalInfo: {
-    collateralValue: number;
-    collateralToken: string;
-    dailyTax: number;
-    minDays: number;
-    maxDays: number;
-  };
+  tokenId: string;
+  collateral: string;
+  collateral_amount: number;
+  interest_rate: number;
+  rent_time_min: number;
+  rent_time_max: number;
   metadata: any;
 }
 
@@ -51,7 +49,7 @@ export default function NftCard({
           </div>
           <div className={styles.collateral}>
             <div className={styles.collateralValue}>
-              <span>{nftInfo.rentalInfo.collateralValue}</span>
+              <span>{nftInfo.collateral_amount}</span>
               <Image
                 src="/ethereum.svg"
                 alt="Ethereum logo"
@@ -63,7 +61,7 @@ export default function NftCard({
           </div>
           <div className={styles.dailyTax}>
             <div className={styles.collateralValue}>
-              <span>{nftInfo.rentalInfo.dailyTax}</span>
+              <span>{nftInfo.interest_rate}</span>
               <Image
                 src="/ethereum.svg"
                 alt="Ethereum logo"
@@ -80,7 +78,7 @@ export default function NftCard({
       </button>
       <div className={styles.dayMinMax}>
         <span>
-          {nftInfo.rentalInfo.minDays} day min - {nftInfo.rentalInfo.maxDays}
+          {nftInfo.rent_time_min} day min - {nftInfo.rent_time_max}
           day max
         </span>
       </div>
