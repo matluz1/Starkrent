@@ -55,9 +55,9 @@ export default function Page() {
   const router = useRouter();
   const { collectionAddress } = router.query;
 
-  const notFullImage =
-    collections.find((item) => item.address === collectionAddress)?.info
-      .notFullImageItems || true;
+  const fullImage = collections.find(
+    (element) => element.address === collectionAddress,
+  )?.info.fullImageItems;
 
   const [nftInfoArray, setNftInfoArray] = useState<NftInfo[]>([]);
   const [isLoading, setIsLoading] = useState(true);
@@ -101,7 +101,7 @@ export default function Page() {
           <NftCard
             key={element.tokenId}
             nftInfo={element}
-            notFullImage={notFullImage}
+            fullImage={fullImage}
             execute={execute}
           />
         ))}

@@ -6,7 +6,7 @@
       "profileImage": "/starknetid.jpg",
       "description": "Identity and naming service for StarkNet",
       "twitter": "https://twitter.com/Starknet_id",
-      "notFullImageItems": true
+      "fullImageItems": false
     }
   },
   {
@@ -15,7 +15,6 @@
       "name": "Another Collection",
       "profileImage": "/placeholder.png",
       "description": "Vivamus in tincidunt tellus, a placerat felis. In id felis vel erat porta auctor at vel libero. Maecenas bibendum, massa.",
-
       "discord": "https://discord.com/anothercollection",
       "medium": "https://medium.com/anothercollection"
     }
@@ -26,7 +25,6 @@
       "name": "Yet Another Collection",
       "profileImage": "/placeholder.png",
       "description": "Praesent at ipsum sem. In hac habitasse platea dictumst. Vestibulum congue nulla ac euismod elementum. In in orci lacus. Vivamus.",
-
       "twitter": "https://twitter.com/yetanothercollection",
       "discord": "https://discord.com/yetanothercollection"
     }
@@ -46,7 +44,6 @@
       "name": "Another Collection 5",
       "profileImage": "/placeholder.png",
       "description": "This is another collection of things",
-
       "twitter": "https://twitter.com/anothercollection5",
       "discord": "https://discord.com/anothercollection5",
       "medium": "https://medium.com/anothercollection5"
@@ -58,7 +55,6 @@
       "name": "Yet Another Collection 6",
       "profileImage": "/placeholder.png",
       "description": "This is yet another collection of things",
-
       "twitter": "https://twitter.com/yetanothercollection6",
       "discord": "https://discord.com/yetanothercollection6"
     }
