@@ -1,12 +1,12 @@
 import { useState, useEffect } from 'react';
-import Image from 'next/image';
 import { useRouter } from 'next/router';
 import axios from 'axios';
 import { Contract, Provider } from 'starknet';
 import { useStarknetExecute } from '@starknet-react/core';
-import styles from '../../../styles/[collectionAddress].module.scss';
 import collections from '../../../placeholder/collections.json';
-import _ from 'lodash';
+import NftCard from '../../../components/nftCard';
+import styles from '../../../styles/[collectionAddress].module.scss';
+import Image from 'next/image';
 
 interface ContractRental {
   id: string;
@@ -78,11 +78,10 @@ function getExecuteMethod() {
 export default function Page() {
   const router = useRouter();
   const { collectionAddress } = router.query;
-  const ethIconSize = 15;
 
-  const notFullImage = collections.find(
-    (item) => item.address === collectionAddress,
-  )?.info.notFullImageItems;
+  const notFullImage =
+    collections.find((item) => item.address === collectionAddress)?.info
+      .notFullImageItems || true;
 
   const [nftInfoArray, setNftInfoArray] = useState<NftInfo[]>([]);
   const [isLoading, setIsLoading] = useState(true);
@@ -107,80 +106,25 @@ export default function Page() {
   const execute = getExecuteMethod();
 
   return (
-    <>
-      <div className={styles.collectionItemWrapper}>
-        {isLoading && (
-          <Image
-            className={styles.spinner}
-            src="/spinner.svg"
-            alt="spinner"
-            width={30}
-            height={30}
+    <div className={styles.collectionItemWrapper}>
+      {isLoading && (
+        <Image
+          className={styles.spinner}
+          src="/spinner.svg"
+          alt="spinner"
+          width={30}
+          height={30}
+        />
+      )}
+
+      {!isLoading &&
+        nftInfoArray.map((element) => (
+          <NftCard
+            nftInfo={element}
+            notFullImage={notFullImage}
+            execute={execute}
           />
-        )}
-        {!isLoading &&
-          nftInfoArray.map((item) => (
-            <div className={styles.collectionItem} key={item.id}>
-              <button className={styles.itemContent}>
-                <div
-                  className={
-                    notFullImage
-                      ? `${styles.itemImage} ${styles.notFullImage}`
-                      : styles.itemImage
-                  }
-                >
-                  <Image
-                    src={item.metadata.image}
-                    alt={item.metadata.description}
-                    width={60}
-                    height={60}
-                    unoptimized //reason for the 'unoptimized': https://github.com/vercel/next.js/issues/42032
-                  />
-                </div>
-                <div className={styles.itemInfo}>
-                  <div className={styles.name}>
-                    <span className={styles.nameValue}>
-                      {item.metadata.name}
-                    </span>
-                  </div>
-                  <div className={styles.collateral}>
-                    <div className={styles.collateralValue}>
-                      <span>{item.rentalInfo.collateralValue}</span>
-                      <Image
-                        src="/ethereum.svg"
-                        alt="Ethereum logo"
-                        width={ethIconSize}
-                        height={ethIconSize}
-                      />
-                    </div>
-                    <span className={styles.collateralLabel}>Collateral</span>
-                  </div>
-                  <div className={styles.dailyTax}>
-                    <div className={styles.collateralValue}>
-                      <span>{item.rentalInfo.dailyTax}</span>
-                      <Image
-                        src="/ethereum.svg"
-                        alt="Ethereum logo"
-                        width={ethIconSize}
-                        height={ethIconSize}
-                      />
-                    </div>
-                    <span className={styles.dailyTaxLabel}>Daily Tax</span>
-                  </div>
-                </div>
-              </button>
-              <button className={styles.borrow} onClick={() => execute()}>
-                <span>Borrow</span>
-              </button>
-              <div className={styles.dayMinMax}>
-                <span>
-                  {item.rentalInfo.minDays} day min - {item.rentalInfo.maxDays}
-                  day max
-                </span>
-              </div>
-            </div>
-          ))}
-      </div>
-    </>
+        ))}
+    </div>
   );
 }

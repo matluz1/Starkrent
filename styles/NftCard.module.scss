@@ -1,0 +1,124 @@
+.collectionItem {
+  width: 15em;
+  margin: 0 auto;
+  font-size: 0.8em;
+  position: relative;
+
+  &:hover {
+    overflow: hidden;
+
+    .itemImage img {
+      transform: scale(1.1);
+      transition: all 0.4s ease;
+    }
+
+    .borrow {
+      display: block;
+    }
+  }
+
+  .itemContent {
+    border-radius: 0.5em 0.5em 0 0;
+
+    .itemImage {
+      border-radius: 0.5em 0.5em 0 0;
+      border: 1px solid #2e2940;
+
+      &.notFullImage {
+        padding: 0.6em;
+        background-color: #322d47;
+      }
+
+      img {
+        width: 100%;
+        height: 100%;
+      }
+    }
+
+    .itemInfo {
+      background-color: #262236;
+      padding: 1em;
+
+      .name {
+        text-align: center;
+        padding: 0.5em;
+        margin-bottom: 1.5em;
+      }
+
+      .collateral,
+      .dailyTax {
+        display: inline-block;
+        width: 50%;
+        text-align: center;
+
+        .collateralValue,
+        .dailyTaxValue {
+          display: flex;
+          justify-content: center;
+          gap: 0.3em;
+          align-items: center;
+          font-size: 1.2em;
+
+          img {
+            margin-bottom: 1px;
+            width: 1em;
+            height: 1em;
+          }
+        }
+
+        .collateralLabel,
+        .dailyTaxLabel {
+          color: #716c86;
+          font-size: 0.8em;
+          margin-right: 1em;
+        }
+      }
+    }
+  }
+
+  .borrow {
+    display: none;
+    height: 3em;
+    background-color: rgb(134, 49, 173);
+    background-image: linear-gradient(
+      90deg,
+      rgba(134, 49, 173, 1) 0%,
+      rgba(164, 32, 226, 1) 100%
+    );
+    width: 100%;
+    position: absolute;
+    z-index: 1;
+    transform: translateX(-50%);
+    left: 50%;
+    bottom: 0;
+    border-radius: 0.5em 0.5em;
+    border: 0.2em solid #262236;
+
+    &:hover {
+      background-color: rgb(124, 46, 159);
+      background-image: linear-gradient(
+        90deg,
+        rgba(124, 46, 159, 1) 0%,
+        rgba(152, 31, 209, 1) 100%
+      );
+    }
+
+    span {
+      font-size: 1em;
+    }
+  }
+
+  .dayMinMax {
+    height: 3em;
+    background-color: #262236;
+    color: #716c86;
+    border-radius: 0 0 0.5em 0.5em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    span {
+      font-size: 0.8em;
+    }
+  }
+}
