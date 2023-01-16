@@ -66,7 +66,9 @@ export default function Page() {
     async function fetchAsync() {
       const rentPlaceholder = await fetchContractData();
       const collectionAddress =
-        '0x0783a9097b26eae0586373b2ce0ed3529ddc44069d1e0fbc4f66d42b69d6850d';
+        '0x0798e884450c19e072d6620fefdbeb7387d0453d3fd51d95f5ace1f17633d88b';
+        //0x0798e884450c19e072d6620fefdbeb7387d0453d3fd51d95f5ace1f17633d88b - Old Starknet
+        //0x0783a9097b26eae0586373b2ce0ed3529ddc44069d1e0fbc4f66d42b69d6850d - New Starknet - Doesn't have TokenURI view method
       const rentalAndMetadataArray = await Promise.all(
         rentPlaceholder.map(async (element) => {
           const metadata = await getMetadata(

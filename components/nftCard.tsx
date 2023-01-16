@@ -14,7 +14,7 @@ interface NftInfo {
 
 interface Props {
   nftInfo: NftInfo;
-  notFullImage: boolean;
+  fullImage?: boolean;
   execute: Function;
 }
 
@@ -22,7 +22,7 @@ const ethIconSize = 15;
 
 export default function NftCard({
   nftInfo,
-  notFullImage = true,
+  fullImage = true,
   execute,
 }: Props) {
   return (
@@ -30,9 +30,9 @@ export default function NftCard({
       <button className={styles.itemContent}>
         <div
           className={
-            notFullImage
-              ? `${styles.itemImage} ${styles.notFullImage}`
-              : styles.itemImage
+            fullImage
+              ? styles.itemImage
+              : `${styles.itemImage} ${styles.notFullImage}`
           }
         >
           <Image
