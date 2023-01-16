@@ -2,7 +2,7 @@ const data = [
   {
     owner: '0x05079B3fFe0405D11EB5858551fa6e37A64Fe643688eA2cacF4f8C67fd7170a1',
     collection:
-      '0x0798e884450c19e072d6620fefdbeb7387d0453d3fd51d95f5ace1f17633d88b',
+      '0x0783a9097b26eae0586373b2ce0ed3529ddc44069d1e0fbc4f66d42b69d6850d',
     tokenId: '626200613416',
     collateral: 'ETH',
     collateral_amount: 5,
@@ -14,7 +14,7 @@ const data = [
   {
     owner: '0x05079B3fFe0405D11EB5858551fa6e37A64Fe643688eA2cacF4f8C67fd7170a1',
     collection:
-      '0x0798e884450c19e072d6620fefdbeb7387d0453d3fd51d95f5ace1f17633d88b',
+      '0x0783a9097b26eae0586373b2ce0ed3529ddc44069d1e0fbc4f66d42b69d6850d',
     tokenId: '4047446163',
     collateral: 6,
     collateral_amount: 'USDC',
@@ -26,7 +26,7 @@ const data = [
   {
     owner: '0x05079B3fFe0405D11EB5858551fa6e37A64Fe643688eA2cacF4f8C67fd7170a1',
     collection:
-      '0x0798e884450c19e072d6620fefdbeb7387d0453d3fd51d95f5ace1f17633d88b',
+      '0x0783a9097b26eae0586373b2ce0ed3529ddc44069d1e0fbc4f66d42b69d6850d',
     tokenId: '789793576154',
     collateral: 7,
     collateral_amount: 'ETH',
@@ -38,7 +38,7 @@ const data = [
   {
     owner: '0x05079B3fFe0405D11EB5858551fa6e37A64Fe643688eA2cacF4f8C67fd7170a1',
     collection:
-      '0x0798e884450c19e072d6620fefdbeb7387d0453d3fd51d95f5ace1f17633d88b',
+      '0x0783a9097b26eae0586373b2ce0ed3529ddc44069d1e0fbc4f66d42b69d6850d',
     tokenId: '261880110824',
     collateral: 8,
     collateral_amount: 'ETH',
@@ -50,7 +50,7 @@ const data = [
   {
     owner: '0x05079B3fFe0405D11EB5858551fa6e37A64Fe643688eA2cacF4f8C67fd7170a1',
     collection:
-      '0x0798e884450c19e072d6620fefdbeb7387d0453d3fd51d95f5ace1f17633d88b',
+      '0x0783a9097b26eae0586373b2ce0ed3529ddc44069d1e0fbc4f66d42b69d6850d',
     tokenId: '151714533694',
     collateral: 9,
     collateral_amount: 'ETH',
@@ -62,7 +62,7 @@ const data = [
   {
     owner: '0x05079B3fFe0405D11EB5858551fa6e37A64Fe643688eA2cacF4f8C67fd7170a1',
     collection:
-      '0x0798e884450c19e072d6620fefdbeb7387d0453d3fd51d95f5ace1f17633d88b',
+      '0x0783a9097b26eae0586373b2ce0ed3529ddc44069d1e0fbc4f66d42b69d6850d',
     tokenId: '975565364964',
     collateral: 4,
     collateral_amount: 'ETH',
@@ -74,7 +74,7 @@ const data = [
   {
     owner: '0x05079B3fFe0405D11EB5858551fa6e37A64Fe643688eA2cacF4f8C67fd7170a1',
     collection:
-      '0x0798e884450c19e072d6620fefdbeb7387d0453d3fd51d95f5ace1f17633d88b',
+      '0x0783a9097b26eae0586373b2ce0ed3529ddc44069d1e0fbc4f66d42b69d6850d',
     tokenId: '271151016753',
     collateral: 3,
     collateral_amount: 'ETH',
@@ -86,7 +86,7 @@ const data = [
   {
     owner: '0x05079B3fFe0405D11EB5858551fa6e37A64Fe643688eA2cacF4f8C67fd7170a1',
     collection:
-      '0x0798e884450c19e072d6620fefdbeb7387d0453d3fd51d95f5ace1f17633d88b',
+      '0x0783a9097b26eae0586373b2ce0ed3529ddc44069d1e0fbc4f66d42b69d6850d',
     tokenId: '403599875324',
     collateral: 5,
     collateral_amount: 'ETH',
@@ -98,7 +98,7 @@ const data = [
   {
     owner: '0x05079B3fFe0405D11EB5858551fa6e37A64Fe643688eA2cacF4f8C67fd7170a1',
     collection:
-      '0x0798e884450c19e072d6620fefdbeb7387d0453d3fd51d95f5ace1f17633d88b',
+      '0x0783a9097b26eae0586373b2ce0ed3529ddc44069d1e0fbc4f66d42b69d6850d',
     tokenId: '685666887468',
     collateral: 6,
     collateral_amount: 'ETH',
@@ -110,7 +110,7 @@ const data = [
   {
     owner: '0x05079B3fFe0405D11EB5858551fa6e37A64Fe643688eA2cacF4f8C67fd7170a1',
     collection:
-      '0x0798e884450c19e072d6620fefdbeb7387d0453d3fd51d95f5ace1f17633d88b',
+      '0x0783a9097b26eae0586373b2ce0ed3529ddc44069d1e0fbc4f66d42b69d6850d',
     tokenId: '520669665935',
     collateral: 7,
     collateral_amount: 'ETH',
@@ -122,7 +122,7 @@ const data = [
   {
     owner: '0x05079B3fFe0405D11EB5858551fa6e37A64Fe643688eA2cacF4f8C67fd7170a1',
     collection:
-      '0x0798e884450c19e072d6620fefdbeb7387d0453d3fd51d95f5ace1f17633d88b',
+      '0x0783a9097b26eae0586373b2ce0ed3529ddc44069d1e0fbc4f66d42b69d6850d',
     tokenId: '444190411650',
     collateral: 8,
     collateral_amount: 'ETH',
@@ -134,7 +134,7 @@ const data = [
   {
     owner: '0x05079B3fFe0405D11EB5858551fa6e37A64Fe643688eA2cacF4f8C67fd7170a1',
     collection:
-      '0x0798e884450c19e072d6620fefdbeb7387d0453d3fd51d95f5ace1f17633d88b',
+      '0x0783a9097b26eae0586373b2ce0ed3529ddc44069d1e0fbc4f66d42b69d6850d',
     tokenId: '995420794050',
     collateral: 9,
     collateral_amount: 'ETH',

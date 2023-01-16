@@ -32,7 +32,7 @@ interface NftInfo {
 
 async function fetchContractData(): Promise<ContractRental[]> {
   const contractStruct = await axios.get(
-    '/api/collection/rental/0x0798e884450c19e072d6620fefdbeb7387d0453d3fd51d95f5ace1f17633d88b',
+    '/api/collection/rental/0x0783a9097b26eae0586373b2ce0ed3529ddc44069d1e0fbc4f66d42b69d6850d',
   );
   return contractStruct.data.contractRental;
 }
@@ -66,7 +66,7 @@ export default function Page() {
     async function fetchAsync() {
       const rentPlaceholder = await fetchContractData();
       const collectionAddress =
-        '0x0798e884450c19e072d6620fefdbeb7387d0453d3fd51d95f5ace1f17633d88b';
+        '0x0783a9097b26eae0586373b2ce0ed3529ddc44069d1e0fbc4f66d42b69d6850d';
       const rentalAndMetadataArray = await Promise.all(
         rentPlaceholder.map(async (element) => {
           const metadata = await getMetadata(
