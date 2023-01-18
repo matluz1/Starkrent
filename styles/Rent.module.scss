@@ -1,19 +1,19 @@
 .rent {
-  padding: 1.4rem;
+  padding: 1.4em;
 
   h1 {
-    font-size: 1.4rem;
-    margin-bottom: 4rem;
+    font-size: 1.4em;
+    margin-bottom: 4em;
     text-align: center;
   }
 
   .collectionWrapper {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr));
-    gap: 1.4rem;
+    grid-template-columns: repeat(auto-fit, minmax(30em, 1fr));
+    gap: 1.4em;
 
     .collection {
-      width: 30rem;
+      width: 30em;
       margin: 0 auto;
 
       button:hover {
@@ -22,36 +22,36 @@
 
       .collectionTitle {
         display: flex;
-        gap: 1rem;
+        gap: 1em;
         align-items: center;
         width: 100%;
-        padding: 1.4rem;
+        padding: 1.4em;
         background-color: #181524;
-        border-radius: 0.5rem 0.5rem 0 0;
+        border-radius: 0.5em 0.5em 0 0;
 
         h3 {
-          font-size: 1rem;
+          font-size: 1em;
         }
 
         .profileImage {
           border: 2px solid white;
-          border-radius: 0.4rem;
+          border-radius: 0.4em;
         }
       }
 
       .collectionDescription {
         color: #d4d0e2;
         background-color: #1f1b2d;
-        padding: 1.4rem;
-        font-size: 0.8rem;
+        padding: 1.4em;
+        font-size: 0.8em;
         border-top: 1px solid #0c0a14;
 
         .socials {
           display: flex;
           justify-content: center;
           align-items: center;
-          gap: 1rem;
-          margin-top: 3rem;
+          gap: 1em;
+          margin-top: 3em;
         }
       }
 
@@ -59,11 +59,11 @@
         background-color: #181524;
         width: 100%;
         border-top: 1px solid #36314d;
-        border-radius: 0 0 0.5rem 0.5rem;
+        border-radius: 0 0 0.5em 0.5em;
         display: flex;
         align-items: center;
         justify-content: center;
-        padding: 0.7rem;
+        padding: 0.7em;
       }
     }
   }
