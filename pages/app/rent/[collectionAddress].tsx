@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
 import axios from 'axios';
+import { useAccount } from '@starknet-react/core';
 import { useStarknetExecute } from '@starknet-react/core';
 import collections from '../../../placeholder/collections.json';
 import NftCard from '../../../components/nftCard';
@@ -85,6 +86,7 @@ export default function Page() {
   }, [isLoading]);
 
   const execute = getExecuteMethod();
+  const { status } = useAccount();
 
   return (
     <div className={styles.collectionItemWrapper}>
@@ -105,6 +107,7 @@ export default function Page() {
             nftInfo={element}
             fullImage={fullImage}
             execute={execute}
+            walletStatus={status}
           />
         ))}
     </div>

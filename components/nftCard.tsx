@@ -1,6 +1,7 @@
 import React from 'react';
 import Image from 'next/image';
 import styles from '../styles/NftCard.module.scss';
+import { AccountStatus } from '@starknet-react/core';
 
 interface NftInfo {
   tokenId: string;
@@ -16,6 +17,7 @@ interface Props {
   nftInfo: NftInfo;
   fullImage?: boolean;
   execute: Function;
+  walletStatus: AccountStatus;
 }
 
 const ethIconSize = 15;
@@ -24,6 +26,7 @@ export default function NftCard({
   nftInfo,
   fullImage = true,
   execute,
+  walletStatus,
 }: Props) {
   return (
     <div className={styles.collectionItem}>
@@ -74,7 +77,11 @@ export default function NftCard({
         </div>
       </button>
       <button className={styles.borrow} onClick={() => execute()}>
-        <span>Borrow</span>
+        {walletStatus === 'disconnected' ? (
+          <span>Connect Wallet</span>
+        ) : (
+          <span>Borrow</span>
+        )}
       </button>
       <div className={styles.dayMinMax}>
         <span>
