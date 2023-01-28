@@ -1,6 +1,7 @@
 [
   {
     "address": "0x0783a9097b26eae0586373b2ce0ed3529ddc44069d1e0fbc4f66d42b69d6850d",
+    "baseUri": "https://goerli.indexer.starknet.id/uri?id=",
     "info": {
       "name": "Starknet.id",
       "profileImage": "/starknetid.jpg",
@@ -11,6 +12,7 @@
   },
   {
     "address": "0xa3595A343CE794063864Efa845a75eacFaCf0F1E",
+    "baseUri": "",
     "info": {
       "name": "Another Collection",
       "profileImage": "/placeholder.png",
@@ -21,6 +23,7 @@
   },
   {
     "address": "0x3b3f8a2B2A1BdE6A4b6B4A6A4c6Ae9bBc7Ae8bBd",
+    "baseUri": "",
     "info": {
       "name": "Yet Another Collection",
       "profileImage": "/placeholder.png",
@@ -31,6 +34,7 @@
   },
   {
     "address": "0x671817E82fd2BD62Ad441d901077C03601d012De",
+    "baseUri": "",
     "info": {
       "name": "My Collection 4",
       "profileImage": "/placeholder.png",
@@ -40,6 +44,7 @@
   },
   {
     "address": "0xa3595A343CE794053864Efa845a75eacFaCf0F1E",
+    "baseUri": "",
     "info": {
       "name": "Another Collection 5",
       "profileImage": "/placeholder.png",
@@ -51,6 +56,7 @@
   },
   {
     "address": "0x3b3f8a2B2B1BdE6A4b6B4A6A4c6Ae9bBc7Ae8bBd",
+    "baseUri": "",
     "info": {
       "name": "Yet Another Collection 6",
       "profileImage": "/placeholder.png",
