@@ -1,7 +1,6 @@
 import React from 'react';
 import Image from 'next/image';
 import styles from '../styles/NftCard.module.scss';
-import { AccountStatus } from '@starknet-react/core';
 import { useAccount } from '@starknet-react/core';
 
 interface NftInfo {
