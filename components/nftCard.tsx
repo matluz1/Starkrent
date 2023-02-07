@@ -2,6 +2,7 @@ import React from 'react';
 import Image from 'next/image';
 import styles from '../styles/NftCard.module.scss';
 import { useAccount } from '@starknet-react/core';
+import { useConnectors } from '@starknet-react/core';
 
 interface NftInfo {
   tokenId: string;
@@ -21,13 +22,9 @@ interface Props {
 
 const ethIconSize = 15;
 
-export default function NftCard({
-  nftInfo,
-  fullImage = true,
-  execute,
-}: Props) {
-
+export default function NftCard({ nftInfo, fullImage = true, execute }: Props) {
   const { status } = useAccount();
+  const { connectors, connect } = useConnectors();
 
   return (
     <div className={styles.collectionItem}>
@@ -77,17 +74,21 @@ export default function NftCard({
           </div>
         </div>
       </button>
-      <button className={styles.borrow} onClick={() => execute()}>
-        {status === 'disconnected' ? (
+      {status === 'disconnected' ? (
+        <button className={styles.borrow} onClick={() => connect(connectors[1])}>
           <span>Connect Wallet</span>
-        ) : (
+        </button>
+      ) : (
+        <button className={styles.borrow} onClick={() => execute()}>
           <span>Borrow</span>
-        )}
-      </button>
+        </button>
+      )}
+
       <div className={styles.dayMinMax}>
         <span>
           {nftInfo.rent_time_min} day min - {nftInfo.rent_time_max}
-          &nbsp;day max p{/* prettier keeps removing the necessary non-breaking space */}
+          &nbsp;day max p
+          {/* prettier keeps removing the necessary non-breaking space */}
         </span>
       </div>
     </div>
