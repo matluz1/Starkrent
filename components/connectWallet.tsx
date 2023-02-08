@@ -26,7 +26,7 @@ function shortenAddress(address: string) {
 }
 
 export default function ConnectWallet() {
-  const { account, address, status } = useAccount();
+  const { address, status } = useAccount();
   const { connectors, connect, disconnect } = useConnectors();
 
   return status === 'disconnected' ? (
