@@ -3,6 +3,7 @@ import { Contract, Provider } from 'starknet';
 import collections from '../info/collections.json';
 
 interface ContractOffer {
+  index: number;
   owner: string;
   collection: string;
   tokenId: string;
@@ -32,6 +33,7 @@ export async function getContractOffers(collectionAddress: string) {
   ]);
   const offers: ContractOffer[] = response.offers.map((offer: any) => {
     return {
+      index: Number(offer.index),
       owner: '0x' + offer.offer.owner.toString(16),
       collection: '0x' + offer.offer.collection.toString(16),
       tokenId: offer.offer.tokenId.low.toString(),
@@ -44,7 +46,7 @@ export async function getContractOffers(collectionAddress: string) {
       ),
       rent_time_min: Number(offer.offer.rent_time_min),
       rent_time_max: Number(offer.offer.rent_time_max),
-      timestamp: offer.offer.timestamp.toString()
+      timestamp: offer.offer.timestamp.toString(),
     };
   });
   console.log(offers);
