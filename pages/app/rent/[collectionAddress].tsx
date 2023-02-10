@@ -1,26 +1,16 @@
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
-import axios from 'axios';
 import { useStarknetExecute } from '@starknet-react/core';
 import collections from '../../../info/collections.json';
 import NftCard from '../../../components/nftCard';
 import styles from '../../../styles/[collectionAddress].module.scss';
 import Image from 'next/image';
-import { getMetadata, getContractOffers } from '../../../utils/getMetadata';
+import {
+  getMetadata,
+  getContractOffers,
+} from '../../../utils/getBlockchainInfo';
 
-interface ContractRental {
-  owner: string;
-  collection: string;
-  tokenId: string;
-  collateral: string;
-  collateral_amount: number;
-  interest_rate: number;
-  rent_time_min: number;
-  rent_time_max: number;
-  timestamp: number;
-}
-
-interface NftInfo {
+export interface NftInfo {
   tokenId: string;
   collateral: string;
   collateral_amount: number;
@@ -28,13 +18,6 @@ interface NftInfo {
   rent_time_min: number;
   rent_time_max: number;
   metadata: any;
-}
-
-async function fetchContractData(): Promise<ContractRental[]> {
-  const contractStruct = await axios.get(
-    '/api/collection/rental/0x0783a9097b26eae0586373b2ce0ed3529ddc44069d1e0fbc4f66d42b69d6850d',
-  );
-  return contractStruct.data.contractRental;
 }
 
 function getExecuteMethod() {
@@ -63,12 +46,13 @@ export default function Page() {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
+    const starknetIdAddress =
+      '0x0783a9097b26eae0586373b2ce0ed3529ddc44069d1e0fbc4f66d42b69d6850d';
     async function fetchAsync() {
-      const rentPlaceholder = await fetchContractData();
-      const collectionAddress =
-        '0x0783a9097b26eae0586373b2ce0ed3529ddc44069d1e0fbc4f66d42b69d6850d';
+      const nftInfoArray = await getContractOffers(starknetIdAddress);
+      const collectionAddress = starknetIdAddress;
       const rentalAndMetadataArray = await Promise.all(
-        rentPlaceholder.map(async (element) => {
+        nftInfoArray.map(async (element) => {
           const metadata = await getMetadata(
             collectionAddress,
             element.tokenId,
@@ -78,8 +62,6 @@ export default function Page() {
       );
       setNftInfoArray(rentalAndMetadataArray);
       setIsLoading(false);
-      const test = await getContractOffers("0x0783a9097b26eae0586373b2ce0ed3529ddc44069d1e0fbc4f66d42b69d6850d");
-      console.log(test);
     }
     fetchAsync();
   }, [isLoading]);
