@@ -87,7 +87,7 @@ export default function NftCard({ nftInfo, fullImage = true, execute }: Props) {
       <div className={styles.dayMinMax}>
         <span>
           {nftInfo.rent_time_min} day min - {nftInfo.rent_time_max}
-          &nbsp;day max p
+          &nbsp;day max
           {/* prettier keeps removing the necessary non-breaking space */}
         </span>
       </div>
