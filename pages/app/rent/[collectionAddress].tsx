@@ -1,6 +1,5 @@
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
-import { useStarknetExecute } from '@starknet-react/core';
 import collections from '../../../info/collections.json';
 import NftCard from '../../../components/nftCard';
 import styles from '../../../styles/[collectionAddress].module.scss';
@@ -8,30 +7,23 @@ import Image from 'next/image';
 import {
   getMetadata,
   getContractOffers,
-} from '../../../utils/getBlockchainInfo';
+} from '../../../utils/readBlockchainInfo';
 
-export interface NftInfo {
+interface ContractOffer {
+  index: number;
+  owner: string;
+  collection: string;
   tokenId: string;
   collateral: string;
   collateral_amount: number;
   interest_rate: number;
   rent_time_min: number;
   rent_time_max: number;
-  metadata: any;
+  timestamp: number;
 }
 
-function getExecuteMethod() {
-  //run reset_counter method from https://github.com/starknet-edu/starknet-cairo-101/blob/main/contracts/ex03.cairo
-  const calls = [
-    {
-      contractAddress:
-        '0x79275e734d50d7122ef37bb939220a44d0b1ad5d8e92be9cdb043d85ec85e24',
-      entrypoint: 'reset_counter',
-      calldata: [],
-    },
-  ];
-
-  return useStarknetExecute({ calls }).execute;
+export interface NftOffer extends ContractOffer {
+  metadata: any;
 }
 
 export default function Page() {
@@ -42,7 +34,7 @@ export default function Page() {
     (element) => element.address === collectionAddress,
   )?.info.fullImageItems;
 
-  const [nftInfoArray, setNftInfoArray] = useState<NftInfo[]>([]);
+  const [nftInfoArray, setNftInfoArray] = useState<NftOffer[]>([]);
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
@@ -51,7 +43,7 @@ export default function Page() {
     async function fetchAsync() {
       const nftInfoArray = await getContractOffers(starknetIdAddress);
       const collectionAddress = starknetIdAddress;
-      const rentalAndMetadataArray = await Promise.all(
+      const rentalAndMetadataArray: NftOffer[] = await Promise.all(
         nftInfoArray.map(async (element) => {
           const metadata = await getMetadata(
             collectionAddress,
@@ -60,13 +52,12 @@ export default function Page() {
           return { ...element, metadata };
         }),
       );
+      console.log(rentalAndMetadataArray);
       setNftInfoArray(rentalAndMetadataArray);
       setIsLoading(false);
     }
     fetchAsync();
   }, [isLoading]);
-
-  const execute = getExecuteMethod();
 
   return (
     <div className={styles.collectionItemWrapper}>
@@ -84,9 +75,8 @@ export default function Page() {
         nftInfoArray.map((element) => (
           <NftCard
             key={element.tokenId}
-            nftInfo={element}
+            nftOffer={element}
             fullImage={fullImage}
-            execute={execute}
           />
         ))}
     </div>

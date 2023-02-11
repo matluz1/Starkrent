@@ -49,7 +49,6 @@ export async function getContractOffers(collectionAddress: string) {
       timestamp: offer.offer.timestamp.toString(),
     };
   });
-  console.log(offers);
   return offers;
 }
 

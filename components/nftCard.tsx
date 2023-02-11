@@ -3,28 +3,36 @@ import Image from 'next/image';
 import styles from '../styles/NftCard.module.scss';
 import { useAccount } from '@starknet-react/core';
 import { useConnectors } from '@starknet-react/core';
+import { getRentExecute } from '../utils/writeBlockchainInfo';
 
-interface NftInfo {
+interface ContractOffer {
+  index: number;
+  owner: string;
+  collection: string;
   tokenId: string;
   collateral: string;
   collateral_amount: number;
   interest_rate: number;
   rent_time_min: number;
   rent_time_max: number;
+  timestamp: number;
+}
+
+interface NftOffer extends ContractOffer {
   metadata: any;
 }
 
 interface Props {
-  nftInfo: NftInfo;
+  nftOffer: NftOffer;
   fullImage?: boolean;
-  execute: Function;
 }
 
 const ethIconSize = 15;
 
-export default function NftCard({ nftInfo, fullImage = true, execute }: Props) {
+export default function NftCard({ nftOffer, fullImage = true }: Props) {
   const { status } = useAccount();
   const { connectors, connect } = useConnectors();
+  const execute = getRentExecute({ ...nftOffer });
 
   return (
     <div className={styles.collectionItem}>
@@ -37,8 +45,8 @@ export default function NftCard({ nftInfo, fullImage = true, execute }: Props) {
           }
         >
           <Image
-            src={nftInfo.metadata.image}
-            alt={nftInfo.metadata.description}
+            src={nftOffer.metadata.image}
+            alt={nftOffer.metadata.description}
             width={60}
             height={60}
             unoptimized //reason for the 'unoptimized': https://github.com/vercel/next.js/issues/42032
@@ -46,11 +54,11 @@ export default function NftCard({ nftInfo, fullImage = true, execute }: Props) {
         </div>
         <div className={styles.itemInfo}>
           <div className={styles.name}>
-            <span className={styles.nameValue}>{nftInfo.metadata.name}</span>
+            <span className={styles.nameValue}>{nftOffer.metadata.name}</span>
           </div>
           <div className={styles.collateral}>
             <div className={styles.collateralValue}>
-              <span>{nftInfo.collateral_amount}</span>
+              <span>{nftOffer.collateral_amount}</span>
               <Image
                 src="/ethereum.svg"
                 alt="Ethereum logo"
@@ -62,7 +70,7 @@ export default function NftCard({ nftInfo, fullImage = true, execute }: Props) {
           </div>
           <div className={styles.dailyTax}>
             <div className={styles.collateralValue}>
-              <span>{nftInfo.interest_rate}</span>
+              <span>{nftOffer.interest_rate}</span>
               <Image
                 src="/ethereum.svg"
                 alt="Ethereum logo"
@@ -75,7 +83,10 @@ export default function NftCard({ nftInfo, fullImage = true, execute }: Props) {
         </div>
       </button>
       {status === 'disconnected' ? (
-        <button className={styles.borrow} onClick={() => connect(connectors[1])}>
+        <button
+          className={styles.borrow}
+          onClick={() => connect(connectors[1])}
+        >
           <span>Connect Wallet</span>
         </button>
       ) : (
@@ -86,7 +97,7 @@ export default function NftCard({ nftInfo, fullImage = true, execute }: Props) {
 
       <div className={styles.dayMinMax}>
         <span>
-          {nftInfo.rent_time_min} day min - {nftInfo.rent_time_max}
+          {nftOffer.rent_time_min} day min - {nftOffer.rent_time_max}
           &nbsp;day max
           {/* prettier keeps removing the necessary non-breaking space */}
         </span>
