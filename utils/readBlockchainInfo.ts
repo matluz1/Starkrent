@@ -38,12 +38,12 @@ export async function getContractOffers(collectionAddress: string) {
       collection: '0x' + offer.offer.collection.toString(16),
       tokenId: offer.offer.tokenId.low.toString(),
       collateral: '0x' + offer.offer.collateral.toString(16),
-      collateral_amount: Number(
-        offer.offer.collateral_amount.low + offer.offer.collateral_amount.high,
-      ),
-      interest_rate: Number(
-        offer.offer.interest_rate.low + offer.offer.interest_rate.high,
-      ),
+      collateral_amount:
+        Number(offer.offer.collateral_amount.low) +
+        Number(offer.offer.collateral_amount.high) * 2 ** 128,
+      interest_rate:
+        Number(offer.offer.interest_rate.low) +
+        Number(offer.offer.interest_rate.high) * 2 ** 128,
       rent_time_min: Number(offer.offer.rent_time_min),
       rent_time_max: Number(offer.offer.rent_time_max),
       timestamp: offer.offer.timestamp.toString(),
