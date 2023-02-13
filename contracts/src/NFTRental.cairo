@@ -9,14 +9,14 @@ from openzeppelin.access.ownable.library import Ownable
 
 from src.collateral.library import Collateral
 from src.collection.library import Collection
-from src.offer.library import Offer, OfferStruct
+from src.offer.library import Offer, OfferStruct, IndexedOfferStruct
 from src.rent.library import Rent
 
 @constructor
 func constructor{syscall_ptr: felt*, pedersen_ptr: HashBuiltin*, range_check_ptr}(
     limit_rent_min_time: felt,
     limit_rent_max_time: felt,
-    limit_same_nft_offer,
+    limit_same_nft_offer: felt,
     tax_fee: felt,
     owner: felt,
 ) {
@@ -53,7 +53,7 @@ func listOffers{syscall_ptr: felt*, pedersen_ptr: HashBuiltin*, range_check_ptr}
     filter_by_collection: felt,
     filter_by_owner: felt,
     inverse_order: felt,
-) -> (offers_len: felt, offers: OfferStruct*) {
+) -> (offers_len: felt, offers: IndexedOfferStruct*) {
     let (len, offers) = Offer.list(
         offset, limit, filter_by_collection, filter_by_owner, inverse_order
     );
@@ -72,7 +72,7 @@ func getOffer{syscall_ptr: felt*, pedersen_ptr: HashBuiltin*, range_check_ptr}(i
 @view
 func getOffersByTokenId{syscall_ptr: felt*, pedersen_ptr: HashBuiltin*, range_check_ptr}(
     collection: felt, tokenId: Uint256
-) -> (offers_len: felt, offers: OfferStruct*) {
+) -> (offers_len: felt, offers: IndexedOfferStruct*) {
     let (len, offers) = Offer.get_by_token_id(collection, tokenId);
 
     return (len, offers);
@@ -259,7 +259,7 @@ func returnNFT{syscall_ptr: felt*, pedersen_ptr: HashBuiltin*, range_check_ptr}(
 ) {
     Rent.assert_only_rent_owner(index);
 
-    Rent.return_NFT(index, tax_fee, timestamp);
+    Rent.return_NFT(index, collection, tokenId);
 
     return ();
 }

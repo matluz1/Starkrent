@@ -327,8 +327,8 @@ namespace Rent {
         let (rent) = get(index);
 
         with_attr error_message("Rent: this rent no longer exists.") {
-            assert rent.collection = collection;
-            assert_uint256_eq(rent.tokenId, tokenId);
+            assert rent.offer.collection = collection;
+            assert_uint256_eq(rent.offer.tokenId, tokenId);
         }
 
         remove_by_index(index);
