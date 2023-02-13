@@ -36,7 +36,10 @@ export async function getContractOffers(collectionAddress: string) {
       index: Number(offer.index),
       owner: '0x' + offer.offer.owner.toString(16),
       collection: '0x' + offer.offer.collection.toString(16),
-      tokenId: offer.offer.tokenId.low.toString(),
+      tokenId: (
+        Number(offer.offer.tokenId.low) +
+        Number(offer.offer.tokenId.high) * 2 ** 128
+      ).toString(),
       collateral: '0x' + offer.offer.collateral.toString(16),
       collateral_amount:
         Number(offer.offer.collateral_amount.low) +
