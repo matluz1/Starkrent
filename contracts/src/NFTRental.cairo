@@ -291,7 +291,7 @@ func returnNFT{syscall_ptr: felt*, pedersen_ptr: HashBuiltin*, range_check_ptr}(
 ) {
     Rent.assert_only_rent_owner(index);
 
-    Rent.return_NFT(index, collection, tokenId);
+    Rent.return_NFT(index, tax_fee, timestamp);
 
     return ();
 }
