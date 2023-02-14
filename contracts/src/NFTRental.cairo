@@ -10,7 +10,7 @@ from openzeppelin.access.ownable.library import Ownable
 from src.collateral.library import Collateral
 from src.collection.library import Collection
 from src.offer.library import Offer, OfferStruct, IndexedOfferStruct
-from src.rent.library import Rent
+from src.rent.library import Rent, RentStruct, IndexedRentStruct
 
 @constructor
 func constructor{syscall_ptr: felt*, pedersen_ptr: HashBuiltin*, range_check_ptr}(
@@ -76,6 +76,38 @@ func getOffersByTokenId{syscall_ptr: felt*, pedersen_ptr: HashBuiltin*, range_ch
     let (len, offers) = Offer.get_by_token_id(collection, tokenId);
 
     return (len, offers);
+}
+
+@view
+func listRents{syscall_ptr: felt*, pedersen_ptr: HashBuiltin*, range_check_ptr}(
+    offset: felt,
+    limit: felt,
+    filter_by_collection: felt,
+    filter_by_owner: felt,
+    inverse_order: felt,
+) -> (rents_len: felt, rents: IndexedRentStruct*) {
+    let (len, rents) = Rent.list(
+        offset, limit, filter_by_collection, filter_by_owner, inverse_order
+    );
+    return (len, rents);
+}
+
+@view
+func getRent{syscall_ptr: felt*, pedersen_ptr: HashBuiltin*, range_check_ptr}(index: felt) -> (
+    rent: RentStruct
+) {
+    let (rent) = Rent.get(index);
+
+    return (rent,);
+}
+
+@view
+func getRentsByTokenId{syscall_ptr: felt*, pedersen_ptr: HashBuiltin*, range_check_ptr}(
+    collection: felt, tokenId: Uint256
+) -> (rents_len: felt, rents: IndexedRentStruct*) {
+    let (len, rents) = Rent.get_by_token_id(collection, tokenId);
+
+    return (len, rents);
 }
 
 //
