@@ -26,7 +26,7 @@ export function getOfferExecute({
   rent_time_max,
 }: OfferContract) {
   const starkrentContract =
-    '0x02a28030a1b1166e5e66bb25abe2bea61b31a21a1be791386210ad4a901c2275'; //testnet contract
+    '0xbb744a86ffce5a42be9b14f5bfaa02ee535e0b62db5af127411f5f35ce8153'; //testnet contract
   const calls = [
     {
       contractAddress: starkrentContract,
@@ -61,7 +61,7 @@ export function getRentExecute({
   timestamp,
 }: RentContract) {
   const starkrentContract =
-    '0x02a28030a1b1166e5e66bb25abe2bea61b31a21a1be791386210ad4a901c2275'; //testnet contract
+    '0xbb744a86ffce5a42be9b14f5bfaa02ee535e0b62db5af127411f5f35ce8153'; //testnet contract
   const calls = [
     {
       contractAddress: starkrentContract,

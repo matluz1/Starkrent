@@ -17,7 +17,7 @@ interface ContractOffer {
 
 export async function getContractOffers(collectionAddress: string) {
   const contractAddress =
-    '0x02a28030a1b1166e5e66bb25abe2bea61b31a21a1be791386210ad4a901c2275';
+    '0xbb744a86ffce5a42be9b14f5bfaa02ee535e0b62db5af127411f5f35ce8153';
   const provider = new Provider({ sequencer: { network: 'goerli-alpha' } });
   const { abi } = await provider.getClassAt(contractAddress);
   if (abi === undefined) {
