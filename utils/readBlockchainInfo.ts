@@ -2,7 +2,7 @@ import axios from 'axios';
 import { Contract, Provider } from 'starknet';
 import collections from '../info/collections.json';
 
-interface ContractOffer {
+interface OfferContract {
   index: number;
   owner: string;
   collection: string;
@@ -19,7 +19,8 @@ interface RentContract {
   index: number;
   owner: string;
   tax_fee: number;
-  offer: ContractOffer;
+  offer: OfferContract;
+  timestamp: number;
 }
 
 async function getStarknetContract(contractAddress: string) {
@@ -30,6 +31,27 @@ async function getStarknetContract(contractAddress: string) {
   }
   const contract = new Contract(abi, contractAddress, provider);
   return contract;
+}
+
+function getProcessedOffer(offerResponse: any) {
+  return {
+    owner: '0x' + offerResponse.owner.toString(16),
+    collection: '0x' + offerResponse.collection.toString(16),
+    tokenId: (
+      Number(offerResponse.tokenId.low) +
+      Number(offerResponse.tokenId.high) * 2 ** 128
+    ).toString(),
+    collateral: '0x' + offerResponse.collateral.toString(16),
+    collateral_amount:
+      Number(offerResponse.collateral_amount.low) +
+      Number(offerResponse.collateral_amount.high) * 2 ** 128,
+    interest_rate:
+      Number(offerResponse.interest_rate.low) +
+      Number(offerResponse.interest_rate.high) * 2 ** 128,
+    rent_time_min: Number(offerResponse.rent_time_min),
+    rent_time_max: Number(offerResponse.rent_time_max),
+    timestamp: Number(offerResponse.timestamp),
+  };
 }
 
 export async function getCollectionOffers(collectionAddress: string) {
@@ -43,25 +65,10 @@ export async function getCollectionOffers(collectionAddress: string) {
     '0',
     '0',
   ]);
-  const offers: ContractOffer[] = response.offers.map((offer: any) => {
+  const offers: OfferContract[] = response.offers.map((offerElement: any) => {
     return {
-      index: Number(offer.index),
-      owner: '0x' + offer.offer.owner.toString(16),
-      collection: '0x' + offer.offer.collection.toString(16),
-      tokenId: (
-        Number(offer.offer.tokenId.low) +
-        Number(offer.offer.tokenId.high) * 2 ** 128
-      ).toString(),
-      collateral: '0x' + offer.offer.collateral.toString(16),
-      collateral_amount:
-        Number(offer.offer.collateral_amount.low) +
-        Number(offer.offer.collateral_amount.high) * 2 ** 128,
-      interest_rate:
-        Number(offer.offer.interest_rate.low) +
-        Number(offer.offer.interest_rate.high) * 2 ** 128,
-      rent_time_min: Number(offer.offer.rent_time_min),
-      rent_time_max: Number(offer.offer.rent_time_max),
-      timestamp: offer.offer.timestamp.toString(),
+      index: Number(offerElement.index),
+      ...getProcessedOffer(offerElement.offer)
     };
   });
   return offers;
@@ -78,7 +85,16 @@ export async function getUserRents(userAddress: string) {
     userAddress,
     '0',
   ]);
-  console.log(response.rents);
+  const rents: RentContract[] = response.rents.map((rentElement: any) => {
+    return {
+      index: Number(rentElement.index),
+      owner: '0x' + rentElement.rent.owner.toString(16),
+      tax_fee: Number(rentElement.rent.tax_fee),
+      offer: getProcessedOffer(rentElement.rent.offer),
+      timestamp: Number(rentElement.rent.timestamp),
+    }
+  });
+  return rents;
 }
 
 export async function getMetadata(collectionAddress: string, tokenId: string) {
