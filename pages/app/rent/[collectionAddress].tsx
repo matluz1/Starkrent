@@ -6,10 +6,10 @@ import styles from '../../../styles/[collectionAddress].module.scss';
 import Image from 'next/image';
 import {
   getMetadata,
-  getContractOffers,
+  getCollectionOffers,
 } from '../../../utils/readBlockchainInfo';
 
-interface ContractOffer {
+interface OfferContract {
   index: number;
   owner: string;
   collection: string;
@@ -22,7 +22,7 @@ interface ContractOffer {
   timestamp: number;
 }
 
-export interface NftOffer extends ContractOffer {
+export interface NftOffer extends OfferContract {
   metadata: any;
 }
 
@@ -41,7 +41,7 @@ export default function Page() {
     const starknetIdAddress =
       '0x0783a9097b26eae0586373b2ce0ed3529ddc44069d1e0fbc4f66d42b69d6850d';
     async function fetchAsync() {
-      const nftInfoArray = await getContractOffers(starknetIdAddress);
+      const nftInfoArray = await getCollectionOffers(starknetIdAddress);
       const collectionAddress = starknetIdAddress;
       const rentalAndMetadataArray: NftOffer[] = await Promise.all(
         nftInfoArray.map(async (element) => {
