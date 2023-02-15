@@ -77,6 +77,7 @@ export default function Page() {
             key={element.tokenId}
             nftOffer={element}
             fullImage={fullImage}
+            offered
           />
         ))}
     </div>
