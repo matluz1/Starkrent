@@ -15,15 +15,27 @@ interface ContractOffer {
   timestamp: number;
 }
 
-export async function getContractOffers(collectionAddress: string) {
-  const contractAddress =
-    '0xbb744a86ffce5a42be9b14f5bfaa02ee535e0b62db5af127411f5f35ce8153';
+interface RentContract {
+  index: number;
+  owner: string;
+  tax_fee: number;
+  offer: ContractOffer;
+}
+
+async function getStarknetContract(contractAddress: string) {
   const provider = new Provider({ sequencer: { network: 'goerli-alpha' } });
   const { abi } = await provider.getClassAt(contractAddress);
   if (abi === undefined) {
     throw new Error('no abi.');
   }
   const contract = new Contract(abi, contractAddress, provider);
+  return contract;
+}
+
+export async function getCollectionOffers(collectionAddress: string) {
+  const contractAddress =
+    '0xbb744a86ffce5a42be9b14f5bfaa02ee535e0b62db5af127411f5f35ce8153'; //testnet contract
+  const contract = await getStarknetContract(contractAddress);
   const response = await contract.call('listOffers', [
     '0',
     '0',
@@ -53,6 +65,20 @@ export async function getContractOffers(collectionAddress: string) {
     };
   });
   return offers;
+}
+
+export async function getUserRents(userAddress: string) {
+  const contractAddress =
+    '0xbb744a86ffce5a42be9b14f5bfaa02ee535e0b62db5af127411f5f35ce8153'; //testnet contract
+  const contract = await getStarknetContract(contractAddress);
+  const response = await contract.call('listRents', [
+    '0',
+    '0',
+    '0',
+    userAddress,
+    '0',
+  ]);
+  console.log(response.rents);
 }
 
 export async function getMetadata(collectionAddress: string, tokenId: string) {
