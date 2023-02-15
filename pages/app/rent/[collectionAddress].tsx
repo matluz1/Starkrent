@@ -52,7 +52,6 @@ export default function Page() {
           return { ...element, metadata };
         }),
       );
-      console.log(rentalAndMetadataArray);
       setNftInfoArray(rentalAndMetadataArray);
       setIsLoading(false);
     }
