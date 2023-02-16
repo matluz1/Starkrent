@@ -8,12 +8,12 @@ import { getRentExecute } from '../utils/writeBlockchainInfo';
 
 type AccountStatus = 'connected' | 'disconnected';
 
-interface NftOffer extends IndexedOfferContract {
+interface NftInfo extends IndexedOfferContract {
   metadata: any;
 }
 
 interface Props {
-  nftOffer: NftOffer;
+  nftInfo: NftInfo;
   fullImage?: boolean;
   offered?: boolean;
   rented?: boolean;
@@ -22,14 +22,14 @@ interface Props {
 const ethIconSize = 15;
 
 export default function NftCard({
-  nftOffer,
+  nftInfo,
   fullImage = true,
   offered = false,
   rented = false,
 }: Props) {
   const { status } = useAccount();
   const { connectors, connect } = useConnectors();
-  const rentExecute = getRentExecute({ ...nftOffer });
+  const rentExecute = getRentExecute({ ...nftInfo });
   const returnExecute = {}; //add returnExecute
 
   function getExecuteButton(status: AccountStatus) {
@@ -68,8 +68,8 @@ export default function NftCard({
           }
         >
           <Image
-            src={nftOffer.metadata.image}
-            alt={nftOffer.metadata.description}
+            src={nftInfo.metadata.image}
+            alt={nftInfo.metadata.description}
             width={60}
             height={60}
             unoptimized //reason for the 'unoptimized': https://github.com/vercel/next.js/issues/42032
@@ -77,11 +77,11 @@ export default function NftCard({
         </div>
         <div className={styles.itemInfo}>
           <div className={styles.name}>
-            <span className={styles.nameValue}>{nftOffer.metadata.name}</span>
+            <span className={styles.nameValue}>{nftInfo.metadata.name}</span>
           </div>
           <div className={styles.collateral}>
             <div className={styles.collateralValue}>
-              <span>{nftOffer.collateral_amount}</span>
+              <span>{nftInfo.collateral_amount}</span>
               <Image
                 src="/ethereum.svg"
                 alt="Ethereum logo"
@@ -93,7 +93,7 @@ export default function NftCard({
           </div>
           <div className={styles.dailyTax}>
             <div className={styles.collateralValue}>
-              <span>{nftOffer.interest_rate}</span>
+              <span>{nftInfo.interest_rate}</span>
               <Image
                 src="/ethereum.svg"
                 alt="Ethereum logo"
@@ -108,7 +108,7 @@ export default function NftCard({
       {offered || rented ? getExecuteButton(status) : ''}
       <div className={styles.dayMinMax}>
         <span>
-          {nftOffer.rent_time_min} day min - {nftOffer.rent_time_max}
+          {nftInfo.rent_time_min} day min - {nftInfo.rent_time_max}
           &nbsp;day max
           {/* prettier keeps removing the necessary non-breaking space */}
         </span>

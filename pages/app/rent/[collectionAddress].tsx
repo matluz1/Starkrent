@@ -10,7 +10,7 @@ import {
   getCollectionOffers,
 } from '../../../utils/readBlockchainInfo';
 
-export interface NftOffer extends IndexedOfferContract {
+export interface NftInfo extends IndexedOfferContract {
   metadata: any;
 }
 
@@ -22,7 +22,7 @@ export default function Page() {
     (element) => element.address === collectionAddress,
   )?.info.fullImageItems;
 
-  const [nftInfoArray, setNftInfoArray] = useState<NftOffer[]>([]);
+  const [nftInfoArray, setNftInfoArray] = useState<NftInfo[]>([]);
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
@@ -31,7 +31,7 @@ export default function Page() {
     async function fetchAsync() {
       const nftInfoArray = await getCollectionOffers(starknetIdAddress);
       const collectionAddress = starknetIdAddress;
-      const rentalAndMetadataArray: NftOffer[] = await Promise.all(
+      const rentalAndMetadataArray: NftInfo[] = await Promise.all(
         nftInfoArray.map(async (element) => {
           const metadata = await getMetadata(
             collectionAddress,
@@ -62,7 +62,7 @@ export default function Page() {
         nftInfoArray.map((element) => (
           <NftCard
             key={element.tokenId}
-            nftOffer={element}
+            nftInfo={element}
             fullImage={fullImage}
             offered
           />
