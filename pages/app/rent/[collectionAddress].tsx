@@ -8,7 +8,6 @@ import { IndexedOfferContract } from '../../../utils/starkrentInterfaces';
 import {
   getMetadata,
   getCollectionOffers,
-  getUserRents,
 } from '../../../utils/readBlockchainInfo';
 
 export interface NftOffer extends IndexedOfferContract {
