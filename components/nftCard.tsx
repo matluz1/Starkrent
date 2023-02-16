@@ -3,11 +3,12 @@ import Image from 'next/image';
 import styles from '../styles/NftCard.module.scss';
 import { useAccount } from '@starknet-react/core';
 import { useConnectors } from '@starknet-react/core';
-import { RentContract, getRentExecute } from '../utils/writeBlockchainInfo';
+import { IndexedOfferContract } from '../utils/starkrentInterfaces';
+import { getRentExecute } from '../utils/writeBlockchainInfo';
 
 type AccountStatus = 'connected' | 'disconnected';
 
-interface NftOffer extends RentContract {
+interface NftOffer extends IndexedOfferContract {
   metadata: any;
 }
 

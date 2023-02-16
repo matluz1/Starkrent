@@ -1,19 +1,12 @@
 import { useStarknetExecute } from '@starknet-react/core';
 
-export interface OfferContract {
-  collection: string;
-  tokenId: string;
-  collateral: string;
-  collateral_amount: number;
-  interest_rate: number;
-  rent_time_min: number;
-  rent_time_max: number;
-}
+import {
+  OfferExecuteArgs,
+  RentExecuteArgs,
+} from '../utils/starkrentInterfaces';
 
-export interface RentContract extends OfferContract {
-  index: number;
-  owner: string;
-  timestamp: number;
+function getStarkrentAddress() {
+  return "0xbb744a86ffce5a42be9b14f5bfaa02ee535e0b62db5af127411f5f35ce8153" //testnet contract
 }
 
 export function getOfferExecute({
@@ -24,12 +17,11 @@ export function getOfferExecute({
   interest_rate,
   rent_time_min,
   rent_time_max,
-}: OfferContract) {
-  const starkrentContract =
-    '0xbb744a86ffce5a42be9b14f5bfaa02ee535e0b62db5af127411f5f35ce8153'; //testnet contract
+}: OfferExecuteArgs) {
+  const starkrentAddress = getStarkrentAddress();
   const calls = [
     {
-      contractAddress: starkrentContract,
+      contractAddress: starkrentAddress,
       entrypoint: 'offer',
       calldata: [
         collection,
@@ -59,12 +51,11 @@ export function getRentExecute({
   rent_time_min,
   rent_time_max,
   timestamp,
-}: RentContract) {
-  const starkrentContract =
-    '0xbb744a86ffce5a42be9b14f5bfaa02ee535e0b62db5af127411f5f35ce8153'; //testnet contract
+}: RentExecuteArgs) {
+  const starkrentAddress = getStarkrentAddress();
   const calls = [
     {
-      contractAddress: starkrentContract,
+      contractAddress: starkrentAddress,
       entrypoint: 'rent',
       calldata: [
         index,

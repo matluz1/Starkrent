@@ -4,25 +4,14 @@ import collections from '../../../info/collections.json';
 import NftCard from '../../../components/nftCard';
 import styles from '../../../styles/[collectionAddress].module.scss';
 import Image from 'next/image';
+import { IndexedOfferContract } from '../../../utils/starkrentInterfaces';
 import {
   getMetadata,
   getCollectionOffers,
+  getUserRents,
 } from '../../../utils/readBlockchainInfo';
 
-interface OfferContract {
-  index: number;
-  owner: string;
-  collection: string;
-  tokenId: string;
-  collateral: string;
-  collateral_amount: number;
-  interest_rate: number;
-  rent_time_min: number;
-  rent_time_max: number;
-  timestamp: number;
-}
-
-export interface NftOffer extends OfferContract {
+export interface NftOffer extends IndexedOfferContract {
   metadata: any;
 }
 

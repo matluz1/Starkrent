@@ -1,29 +1,16 @@
 import axios from 'axios';
 import { Contract, Provider } from 'starknet';
 import collections from '../info/collections.json';
+import {
+  IndexedOfferContract,
+  IndexedRentContract,
+} from '../utils/starkrentInterfaces';
 
-interface OfferContract {
-  index: number;
-  owner: string;
-  collection: string;
-  tokenId: string;
-  collateral: string;
-  collateral_amount: number;
-  interest_rate: number;
-  rent_time_min: number;
-  rent_time_max: number;
-  timestamp: number;
+function getStarkrentAddress() {
+  return "0xbb744a86ffce5a42be9b14f5bfaa02ee535e0b62db5af127411f5f35ce8153" //testnet contract
 }
 
-interface RentContract {
-  index: number;
-  owner: string;
-  tax_fee: number;
-  offer: OfferContract;
-  timestamp: number;
-}
-
-async function getStarknetContract(contractAddress: string) {
+async function getContract(contractAddress: string) {
   const provider = new Provider({ sequencer: { network: 'goerli-alpha' } });
   const { abi } = await provider.getClassAt(contractAddress);
   if (abi === undefined) {
@@ -55,17 +42,16 @@ function getProcessedOffer(offerResponse: any) {
 }
 
 export async function getCollectionOffers(collectionAddress: string) {
-  const contractAddress =
-    '0xbb744a86ffce5a42be9b14f5bfaa02ee535e0b62db5af127411f5f35ce8153'; //testnet contract
-  const contract = await getStarknetContract(contractAddress);
-  const response = await contract.call('listOffers', [
+  const starkrentAddress = getStarkrentAddress();
+  const starknetContract = await getContract(starkrentAddress);
+  const response = await starknetContract.call('listOffers', [
     '0',
     '0',
     collectionAddress,
     '0',
     '0',
   ]);
-  const offers: OfferContract[] = response.offers.map((offerElement: any) => {
+  const offers: IndexedOfferContract[] = response.offers.map((offerElement: any) => {
     return {
       index: Number(offerElement.index),
       ...getProcessedOffer(offerElement.offer)
@@ -75,9 +61,8 @@ export async function getCollectionOffers(collectionAddress: string) {
 }
 
 export async function getUserRents(userAddress: string) {
-  const contractAddress =
-    '0xbb744a86ffce5a42be9b14f5bfaa02ee535e0b62db5af127411f5f35ce8153'; //testnet contract
-  const contract = await getStarknetContract(contractAddress);
+  const contractAddress = getStarkrentAddress();
+  const contract = await getContract(contractAddress);
   const response = await contract.call('listRents', [
     '0',
     '0',
@@ -85,7 +70,7 @@ export async function getUserRents(userAddress: string) {
     userAddress,
     '0',
   ]);
-  const rents: RentContract[] = response.rents.map((rentElement: any) => {
+  const rents: IndexedRentContract[] = response.rents.map((rentElement: any) => {
     return {
       index: Number(rentElement.index),
       owner: '0x' + rentElement.rent.owner.toString(16),
