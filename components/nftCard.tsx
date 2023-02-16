@@ -3,36 +3,58 @@ import Image from 'next/image';
 import styles from '../styles/NftCard.module.scss';
 import { useAccount } from '@starknet-react/core';
 import { useConnectors } from '@starknet-react/core';
-import { getRentExecute } from '../utils/writeBlockchainInfo';
+import { RentContract, getRentExecute } from '../utils/writeBlockchainInfo';
 
-interface ContractOffer {
-  index: number;
-  owner: string;
-  collection: string;
-  tokenId: string;
-  collateral: string;
-  collateral_amount: number;
-  interest_rate: number;
-  rent_time_min: number;
-  rent_time_max: number;
-  timestamp: number;
-}
+type AccountStatus = 'connected' | 'disconnected';
 
-interface NftOffer extends ContractOffer {
+interface NftOffer extends RentContract {
   metadata: any;
 }
 
 interface Props {
   nftOffer: NftOffer;
   fullImage?: boolean;
+  offered?: boolean;
+  rented?: boolean;
 }
 
 const ethIconSize = 15;
 
-export default function NftCard({ nftOffer, fullImage = true }: Props) {
+export default function NftCard({
+  nftOffer,
+  fullImage = true,
+  offered = false,
+  rented = false,
+}: Props) {
   const { status } = useAccount();
   const { connectors, connect } = useConnectors();
-  const execute = getRentExecute({ ...nftOffer });
+  const rentExecute = getRentExecute({ ...nftOffer });
+  const returnExecute = {}; //add returnExecute
+
+  function getExecuteButton(status: AccountStatus) {
+    let button = (
+      <button className={styles.borrow} onClick={() => connect(connectors[1])}>
+        <span>Connect Wallet</span>
+      </button>
+    );
+    if (status === 'connected' && (offered || rented)) {
+      button = (
+        <button className={styles.borrow} onClick={() => rentExecute()}>
+          <span>Borrow</span>
+        </button>
+      );
+    } else if (status === 'connected' && rented) {
+      button = (
+        <button
+          className={styles.borrow}
+          onClick={() => console.log('returnExecute')}
+        >
+          <span>Return</span>
+        </button>
+      );
+    }
+    return button;
+  }
 
   return (
     <div className={styles.collectionItem}>
@@ -82,19 +104,7 @@ export default function NftCard({ nftOffer, fullImage = true }: Props) {
           </div>
         </div>
       </button>
-      {status === 'disconnected' ? (
-        <button
-          className={styles.borrow}
-          onClick={() => connect(connectors[1])}
-        >
-          <span>Connect Wallet</span>
-        </button>
-      ) : (
-        <button className={styles.borrow} onClick={() => execute()}>
-          <span>Borrow</span>
-        </button>
-      )}
-
+      {offered || rented ? getExecuteButton(status) : ''}
       <div className={styles.dayMinMax}>
         <span>
           {nftOffer.rent_time_min} day min - {nftOffer.rent_time_max}
