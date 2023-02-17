@@ -10,7 +10,8 @@ import {
   getCollectionOffers,
 } from '../../../utils/readBlockchainInfo';
 
-export interface NftInfo extends IndexedOfferContract {
+export interface NftInfo {
+  offerInfo: IndexedOfferContract;
   metadata: any;
 }
 
@@ -37,7 +38,7 @@ export default function Page() {
             collectionAddress,
             element.tokenId,
           );
-          return { ...element, metadata };
+          return { offerInfo: element, metadata };
         }),
       );
       setNftInfoArray(rentalAndMetadataArray);
@@ -61,10 +62,10 @@ export default function Page() {
       {!isLoading &&
         nftInfoArray.map((element) => (
           <NftCard
-            key={element.tokenId}
-            nftInfo={element}
+            key={element.offerInfo.index}
+            metadata={element.metadata}
+            offerInfo={element.offerInfo}
             fullImage={fullImage}
-            offered
           />
         ))}
     </div>
