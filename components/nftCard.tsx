@@ -28,17 +28,26 @@ function getOfferModal() {}
 function getReturnExecute() {}
 
 function getExecuteButton(
-  execute: VoidFunction,
   offerInfo?: IndexedOfferContract,
   rentInfo?: IndexedRentContract,
 ) {
+  const { status } = useAccount();
+  const { connectors, connect } = useConnectors();
+
+  let execute = getOfferModal;
+  if (offerInfo) {
+    execute = getRentExecute({ ...offerInfo });
+  }
+  if (rentInfo) {
+    execute = getReturnExecute;
+  }
+
   let button = (
     <button className={styles.borrow} onClick={() => execute()}>
       <span>Offer for Rent</span>
     </button>
   );
-  const { status } = useAccount();
-  const { connectors, connect } = useConnectors();
+
   if (status === 'disconnected') {
     button = (
       <button className={styles.borrow} onClick={() => connect(connectors[1])}>
@@ -90,14 +99,6 @@ export default function NftCard({
   rentInfo,
   fullImage = true,
 }: Props) {
-  let execute = getOfferModal;
-  if (offerInfo) {
-    execute = getRentExecute({ ...offerInfo });
-  }
-  if (rentInfo) {
-    execute = getReturnExecute;
-  }
-
   let nftInfo: any;
   if (offerInfo) {
     nftInfo = offerInfo;
@@ -158,11 +159,7 @@ export default function NftCard({
           )}
         </div>
       </button>
-      {getExecuteButton(
-        execute,
-        offerInfo,
-        rentInfo,
-      )}
+      {getExecuteButton(offerInfo, rentInfo)}
       {getFooter(offerInfo, rentInfo)}
     </div>
   );
