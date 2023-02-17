@@ -99,13 +99,7 @@ export default function NftCard({
   rentInfo,
   fullImage = true,
 }: Props) {
-  let nftInfo: any;
-  if (offerInfo) {
-    nftInfo = offerInfo;
-  }
-  if (rentInfo) {
-    nftInfo = offerInfo;
-  }
+  const nftInfo = offerInfo || rentInfo?.offer;
 
   return (
     <div className={styles.collectionItem}>
@@ -132,7 +126,7 @@ export default function NftCard({
           {(offerInfo || rentInfo) && (
             <div className={styles.collateral}>
               <div className={styles.collateralValue}>
-                <span>{nftInfo.collateral_amount}</span>
+                <span>{nftInfo?.collateral_amount}</span>
                 <Image
                   src="/ethereum.svg"
                   alt="Ethereum logo"
@@ -146,7 +140,7 @@ export default function NftCard({
           {(offerInfo || rentInfo) && (
             <div className={styles.dailyTax}>
               <div className={styles.collateralValue}>
-                <span>{nftInfo.interest_rate}</span>
+                <span>{nftInfo?.interest_rate}</span>
                 <Image
                   src="/ethereum.svg"
                   alt="Ethereum logo"
