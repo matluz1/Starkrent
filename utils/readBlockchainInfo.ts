@@ -7,7 +7,7 @@ import {
 } from '../utils/starkrentInterfaces';
 
 function getStarkrentAddress() {
-  return "0xbb744a86ffce5a42be9b14f5bfaa02ee535e0b62db5af127411f5f35ce8153" //testnet contract
+  return '0xbb744a86ffce5a42be9b14f5bfaa02ee535e0b62db5af127411f5f35ce8153'; //testnet contract
 }
 
 async function getContract(contractAddress: string) {
@@ -51,12 +51,14 @@ export async function getCollectionOffers(collectionAddress: string) {
     '0',
     '0',
   ]);
-  const offers: IndexedOfferContract[] = response.offers.map((offerElement: any) => {
-    return {
-      index: Number(offerElement.index),
-      ...getProcessedOffer(offerElement.offer)
-    };
-  });
+  const offers: IndexedOfferContract[] = response.offers.map(
+    (offerElement: any) => {
+      return {
+        index: Number(offerElement.index),
+        ...getProcessedOffer(offerElement.offer),
+      };
+    },
+  );
   return offers;
 }
 
@@ -70,15 +72,17 @@ export async function getUserRents(userAddress: string) {
     userAddress,
     '0',
   ]);
-  const rents: IndexedRentContract[] = response.rents.map((rentElement: any) => {
-    return {
-      index: Number(rentElement.index),
-      owner: '0x' + rentElement.rent.owner.toString(16),
-      tax_fee: Number(rentElement.rent.tax_fee),
-      offer: getProcessedOffer(rentElement.rent.offer),
-      timestamp: Number(rentElement.rent.timestamp),
-    }
-  });
+  const rents: IndexedRentContract[] = response.rents.map(
+    (rentElement: any) => {
+      return {
+        index: Number(rentElement.index),
+        owner: '0x' + rentElement.rent.owner.toString(16),
+        tax_fee: Number(rentElement.rent.tax_fee),
+        offer: getProcessedOffer(rentElement.rent.offer),
+        timestamp: Number(rentElement.rent.timestamp),
+      };
+    },
+  );
   return rents;
 }
 

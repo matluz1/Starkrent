@@ -6,7 +6,7 @@ import {
 } from '../utils/starkrentInterfaces';
 
 function getStarkrentAddress() {
-  return "0xbb744a86ffce5a42be9b14f5bfaa02ee535e0b62db5af127411f5f35ce8153" //testnet contract
+  return '0xbb744a86ffce5a42be9b14f5bfaa02ee535e0b62db5af127411f5f35ce8153'; //testnet contract
 }
 
 export function getOfferExecute({
