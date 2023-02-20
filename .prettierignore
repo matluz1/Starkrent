@@ -2,3 +2,6 @@
 build
 coverage
 .next
+contracts/build
+contracts/lib
+contracts/.protostar_cache
