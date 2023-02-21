@@ -65,7 +65,7 @@ function getExecuteButton(
   if (status === 'connected' && rentInfo) {
     button = (
       <button className={styles.borrow} onClick={() => execute()}>
-        <span>Return</span>
+        <span>Return NFT</span>
       </button>
     );
   }
