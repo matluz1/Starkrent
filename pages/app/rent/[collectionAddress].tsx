@@ -10,7 +10,7 @@ import {
   getCollectionOffers,
 } from '../../../utils/readBlockchainInfo';
 
-export interface NftInfo {
+interface NftInfo {
   offerInfo: IndexedOfferContract;
   metadata: any;
 }
@@ -19,32 +19,32 @@ export default function Page() {
   const router = useRouter();
   const { collectionAddress } = router.query;
 
+  const [nftInfoArray, setNftInfoArray] = useState<NftInfo[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
+
   const fullImage = collections.find(
     (element) => element.address === collectionAddress,
   )?.info.fullImageItems;
 
-  const [nftInfoArray, setNftInfoArray] = useState<NftInfo[]>([]);
-  const [isLoading, setIsLoading] = useState(true);
+  async function fetchAsync(collectionAddress: string) {
+    const nftInfoArray = await getCollectionOffers(collectionAddress);
+    const rentalAndMetadataArray: NftInfo[] = await Promise.all(
+      nftInfoArray.map(async (element) => {
+        const metadata = await getMetadata(
+          collectionAddress,
+          element.tokenId,
+        );
+        return { offerInfo: element, metadata };
+      }),
+    );
+    setNftInfoArray(rentalAndMetadataArray);
+    setIsLoading(false);
+  }
 
   useEffect(() => {
     const starknetIdAddress =
-      '0x0783a9097b26eae0586373b2ce0ed3529ddc44069d1e0fbc4f66d42b69d6850d';
-    async function fetchAsync() {
-      const nftInfoArray = await getCollectionOffers(starknetIdAddress);
-      const collectionAddress = starknetIdAddress;
-      const rentalAndMetadataArray: NftInfo[] = await Promise.all(
-        nftInfoArray.map(async (element) => {
-          const metadata = await getMetadata(
-            collectionAddress,
-            element.tokenId,
-          );
-          return { offerInfo: element, metadata };
-        }),
-      );
-      setNftInfoArray(rentalAndMetadataArray);
-      setIsLoading(false);
-    }
-    fetchAsync();
+      '0x783a9097b26eae0586373b2ce0ed3529ddc44069d1e0fbc4f66d42b69d6850d';
+    fetchAsync(starknetIdAddress);
   }, [isLoading]);
 
   return (
