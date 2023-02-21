@@ -86,9 +86,18 @@ export async function getUserRents(userAddress: string) {
   return rents;
 }
 
+function getProcessedAddress(address: string) {
+  let processedAddress = address;
+  if (address.charAt(2) === '0') {
+    processedAddress = '0x' + address.substring(2);
+  }
+  return processedAddress;
+}
+
 export async function getMetadata(collectionAddress: string, tokenId: string) {
+  const processedCollectionAddress = getProcessedAddress(collectionAddress);
   const baseUri = collections.find(
-    (element) => element.address === collectionAddress,
+    (element) => element.address === processedCollectionAddress,
   )?.baseUri;
   const metadata = await axios.get(baseUri + tokenId);
   return metadata.data;
