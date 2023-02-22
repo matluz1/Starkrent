@@ -38,7 +38,8 @@ export default function Profile() {
 
   return (
     <>
-      {isLoading && <h1>loading</h1>}
+      {userStatus == 'disconnected' && <h1>connect wallet</h1>}
+      {isLoading && userStatus == 'connected' && <h1>loading</h1>}
       {!isLoading &&
         nftInfoArray.map((element) => (
           <NftCard
