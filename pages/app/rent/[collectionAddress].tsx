@@ -27,7 +27,10 @@ function processRouterQuery(query: ParsedUrlQuery, routeName: string) {
 
 export default function Page() {
   const router = useRouter();
-  const collectionAddress = processRouterQuery(router.query, 'collectionAddress');
+  const collectionAddress = processRouterQuery(
+    router.query,
+    'collectionAddress',
+  );
 
   const [nftInfoArray, setNftInfoArray] = useState<NftInfo[]>([]);
   const [isLoading, setIsLoading] = useState(true);
@@ -40,10 +43,7 @@ export default function Page() {
     const nftInfoArray = await getCollectionOffers(collectionAddress);
     const rentalAndMetadataArray: NftInfo[] = await Promise.all(
       nftInfoArray.map(async (element) => {
-        const metadata = await getMetadata(
-          collectionAddress,
-          element.tokenId,
-        );
+        const metadata = await getMetadata(collectionAddress, element.tokenId);
         return { offerInfo: element, metadata };
       }),
     );

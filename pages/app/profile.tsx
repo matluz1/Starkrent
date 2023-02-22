@@ -20,7 +20,7 @@ function getLoading() {
 }
 
 function getProfileContent(userAddress: string) {
-  return <Blockies seed={userAddress} className={styles.blockies} scale={25} />
+  return <Blockies seed={userAddress} className={styles.blockies} scale={25} />;
 }
 
 function getNftCards(nftInfoArray: NftInfo[]) {
