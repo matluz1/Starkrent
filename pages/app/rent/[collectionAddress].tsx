@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
+import { ParsedUrlQuery } from 'querystring';
 import collections from '../../../info/collections.json';
 import NftCard from '../../../components/nftCard';
 import styles from '../../../styles/[collectionAddress].module.scss';
@@ -15,9 +16,18 @@ interface NftInfo {
   metadata: any;
 }
 
+function processRouterQuery(query: ParsedUrlQuery, routeName: string) {
+  const { [routeName]: routeQuery } = query;
+  let processedRouterQuery = '';
+  if (typeof routeQuery == 'string') {
+    processedRouterQuery = routeQuery;
+  }
+  return processedRouterQuery;
+}
+
 export default function Page() {
   const router = useRouter();
-  const { collectionAddress } = router.query;
+  const collectionAddress = processRouterQuery(router.query, 'collectionAddress');
 
   const [nftInfoArray, setNftInfoArray] = useState<NftInfo[]>([]);
   const [isLoading, setIsLoading] = useState(true);
@@ -42,10 +52,11 @@ export default function Page() {
   }
 
   useEffect(() => {
-    const starknetIdAddress =
-      '0x783a9097b26eae0586373b2ce0ed3529ddc44069d1e0fbc4f66d42b69d6850d';
-    fetchAsync(starknetIdAddress);
-  }, [isLoading]);
+    if (collectionAddress) {
+      fetchAsync(collectionAddress);
+    }
+    console.log("test");
+  }, [isLoading, collectionAddress]);
 
   return (
     <div className={styles.collectionItemWrapper}>
