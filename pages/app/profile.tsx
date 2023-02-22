@@ -11,6 +11,29 @@ interface NftInfo {
   metadata: any;
 }
 
+function getConnectWallet() {
+  return <h1>connect wallet</h1>;
+}
+
+function getLoading() {
+  return <h1>loading</h1>;
+}
+
+function getProfileContent(userAddress: string) {
+  return <Blockies seed={userAddress} className={styles.blockies} scale={25} />
+}
+
+function getNftCards(nftInfoArray: NftInfo[]) {
+  return nftInfoArray.map((element) => (
+    <NftCard
+      key={element.rentInfo.index}
+      metadata={element.metadata}
+      rentInfo={element.rentInfo}
+      fullImage={false}
+    />
+  ));
+}
+
 export default function Profile() {
   const { status: userStatus, address: userAddress } = useAccount();
 
@@ -40,18 +63,10 @@ export default function Profile() {
 
   return (
     <section className={styles.profile}>
-      {userStatus == 'disconnected' && <h1>connect wallet</h1>}
-      {isLoading && userStatus == 'connected' && <h1>loading</h1>}
-      {!isLoading && userAddress && <Blockies seed={ userAddress } className={styles.blockies} scale={25}/>}
-      {!isLoading && userStatus == 'connected' &&
-        nftInfoArray.map((element) => (
-          <NftCard
-            key={element.rentInfo.index}
-            metadata={element.metadata}
-            rentInfo={element.rentInfo}
-            fullImage={false}
-          />
-        ))}
+      {userStatus == 'disconnected' && getConnectWallet()}
+      {isLoading && userStatus == 'connected' && getLoading()}
+      {!isLoading && userAddress && getProfileContent(userAddress)}
+      {!isLoading && userStatus == 'connected' && getNftCards(nftInfoArray)}
     </section>
   );
 }
