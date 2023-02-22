@@ -1,5 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useAccount } from '@starknet-react/core';
+import Blockies from 'react-blockies';
+import styles from '../../styles/Profile.module.scss';
 import NftCard from '../../components/nftCard';
 import { getUserRents, getMetadata } from '../../utils/readBlockchainInfo';
 import { IndexedRentContract } from '../../utils/starkrentInterfaces';
@@ -37,10 +39,11 @@ export default function Profile() {
   }, [isLoading, userStatus]);
 
   return (
-    <>
+    <section className={styles.profile}>
       {userStatus == 'disconnected' && <h1>connect wallet</h1>}
       {isLoading && userStatus == 'connected' && <h1>loading</h1>}
-      {!isLoading &&
+      {!isLoading && userAddress && <Blockies seed={ userAddress } className={styles.blockies} scale={25}/>}
+      {!isLoading && userStatus == 'connected' &&
         nftInfoArray.map((element) => (
           <NftCard
             key={element.rentInfo.index}
@@ -49,6 +52,6 @@ export default function Profile() {
             fullImage={false}
           />
         ))}
-    </>
+    </section>
   );
 }
