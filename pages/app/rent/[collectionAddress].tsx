@@ -55,7 +55,6 @@ export default function Page() {
     if (collectionAddress) {
       fetchAsync(collectionAddress);
     }
-    console.log("test");
   }, [isLoading, collectionAddress]);
 
   return (
