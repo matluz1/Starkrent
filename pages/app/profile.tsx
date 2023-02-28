@@ -24,14 +24,14 @@ function getProfileContent(userAddress: string) {
 }
 
 function getNftCards(nftInfoArray: NftInfo[]) {
-  return nftInfoArray.map((element) => (
+  return <div className={styles.collectionItemWrapper}> {nftInfoArray.map((element) => (
     <NftCard
       key={element.rentInfo.index}
       metadata={element.metadata}
       rentInfo={element.rentInfo}
       fullImage={false}
     />
-  ));
+  ))}</div>;
 }
 
 export default function Profile() {

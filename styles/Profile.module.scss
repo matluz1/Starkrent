@@ -3,4 +3,10 @@
 
   .blockies {
   }
+
+  .collectionItemWrapper {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(0, max-content));
+    gap: 3em;
+  }
 }
