@@ -1,6 +1,20 @@
 .profile {
   padding: 1.4em;
 
+  .blockiesWrapper {
+    text-align: center;
+
+    .blockies {
+      border-radius: 0.3em;
+      border: 0.1em solid #FFFFFF;
+      margin-bottom: 1.2em;
+    }
+
+    h1 {
+      font-size: 2em;
+    }
+  }
+
   .collectionItemWrapper {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(0, max-content));
