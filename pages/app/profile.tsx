@@ -67,8 +67,8 @@ export default function Profile() {
   return (
     <section className={styles.profile}>
       {userStatus == 'disconnected' && getConnectWallet()}
+      {userAddress && getProfileContent(userAddress)}
       {isLoading && userStatus == 'connected' && getLoading()}
-      {!isLoading && userAddress && getProfileContent(userAddress)}
       {!isLoading && userStatus == 'connected' && getNftCards(nftInfoArray)}
     </section>
   );
