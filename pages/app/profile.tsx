@@ -20,7 +20,10 @@ function getLoading() {
 }
 
 function getProfileContent(userAddress: string) {
-  return <Blockies seed={userAddress} className={styles.blockies} scale={25} />;
+  return <div className={styles.blockiesWrapper}>
+    <Blockies seed={userAddress} className={styles.blockies} scale={15} />
+    <h1>{'0x' + userAddress.slice(2, 6) + '...' + userAddress.slice(-4)}</h1>
+  </div>
 }
 
 function getNftCards(nftInfoArray: NftInfo[]) {
