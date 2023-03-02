@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@headlessui/react": "^1.7.12",
     "@starknet-react/core": "^0.14.8",
     "@types/lodash": "^4.14.191",
     "@types/node": "18.11.15",
