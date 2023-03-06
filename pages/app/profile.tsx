@@ -5,11 +5,17 @@ import styles from '../../styles/Profile.module.scss';
 import NftCard from '../../components/nftCard';
 import { getUserRents, getMetadata } from '../../utils/readBlockchainInfo';
 import { IndexedRentContract } from '../../utils/starkrentInterfaces';
+import { Listbox } from '@headlessui/react';
 
 interface NftInfo {
   rentInfo: IndexedRentContract;
   metadata: any;
 }
+
+const category = [
+  { id: 1, name: 'Rented', unavailable: false },
+  { id: 2, name: 'Owned', unavailable: false },
+];
 
 function getConnectWallet() {
   return <h1>connect wallet</h1>;
@@ -35,6 +41,27 @@ function getNftCards(nftInfoArray: NftInfo[]) {
       fullImage={false}
     />
   ))}</div>;
+}
+
+function MyListbox() {
+  const [selectedPerson, setSelectedPerson] = useState(category[0])
+
+  return (
+    <Listbox value={selectedPerson} onChange={setSelectedPerson}>
+      <Listbox.Button>{selectedPerson.name}</Listbox.Button>
+      <Listbox.Options>
+        {category.map((category) => (
+          <Listbox.Option
+            key={category.id}
+            value={category}
+            disabled={category.unavailable}
+          >
+            {category.name}
+          </Listbox.Option>
+        ))}
+      </Listbox.Options>
+    </Listbox>
+  )
 }
 
 export default function Profile() {
@@ -70,6 +97,7 @@ export default function Profile() {
       {userAddress && getProfileContent(userAddress)}
       {isLoading && userStatus == 'connected' && getLoading()}
       {!isLoading && userStatus == 'connected' && getNftCards(nftInfoArray)}
+      <MyListbox />
     </section>
   );
 }
