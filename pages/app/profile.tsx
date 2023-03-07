@@ -48,8 +48,8 @@ function MyListbox() {
 
   return (
     <Listbox value={selectedPerson} onChange={setSelectedPerson}>
-      <Listbox.Button>{selectedPerson.name}</Listbox.Button>
-      <Listbox.Options>
+      <Listbox.Button className={styles.listbox}>{selectedPerson.name}</Listbox.Button>
+      <Listbox.Options className={styles.listboxOptions}>
         {category.map((category) => (
           <Listbox.Option
             key={category.id}
