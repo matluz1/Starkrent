@@ -20,4 +20,29 @@
     grid-template-columns: repeat(auto-fit, minmax(0, max-content));
     gap: 3em;
   }
+
+  .listbox {
+    margin-top: 2em;
+    padding: 1em 2em;
+    background-color: #2A263A;
+    color: #9491A3;
+    border-radius: 0.5em;
+  }
+
+  .listboxOptions {
+    width: fit-content;
+    margin-left: 0.2em;
+
+    li {
+      padding: 1em;
+      background-color: #555068;
+      color: #d5d5d5;
+
+      &:hover {
+        background-color: #4b465a;
+        color: #d5d5d5;
+        cursor: pointer;
+      }
+    }
+  }
 }
