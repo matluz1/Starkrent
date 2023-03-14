@@ -48,18 +48,20 @@ function MyListbox() {
 
   return (
     <Listbox value={selectedPerson} onChange={setSelectedPerson}>
-      <Listbox.Button className={styles.listbox}>{selectedPerson.name}</Listbox.Button>
-      <Listbox.Options className={styles.listboxOptions}>
-        {category.map((category) => (
-          <Listbox.Option
-            key={category.id}
-            value={category}
-            disabled={category.unavailable}
-          >
-            {category.name}
-          </Listbox.Option>
-        ))}
-      </Listbox.Options>
+      <div className={styles.listboxWrapper}>
+        <Listbox.Button className={styles.listboxButton}>{selectedPerson.name}</Listbox.Button>
+        <Listbox.Options className={styles.listboxOptions}>
+          {category.map((category) => (
+            <Listbox.Option
+              key={category.id}
+              value={category}
+              disabled={category.unavailable}
+            >
+              {category.name}
+            </Listbox.Option>
+          ))}
+        </Listbox.Options>
+      </div>
     </Listbox>
   )
 }
