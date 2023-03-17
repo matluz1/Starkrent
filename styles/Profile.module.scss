@@ -22,28 +22,40 @@
   }
 
   .listboxWrapper {
+    width: 12em;
 
     .listboxButton {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
       margin-top: 2em;
-      padding: 1em 2em;
-      background-color: #2A263A;
-      color: #9491A3;
+      padding: 1em;
+      text-align: left;
+      background-color: #272336;
+      color: #bcb8cd;
       border-radius: 0.5em;
     }
   
     .listboxOptions {
-      width: fit-content;
-      margin-left: 0.2em;
   
       li {
         padding: 1em;
-        background-color: #555068;
-        color: #d5d5d5;
-  
+        background-color: #4e4864;
+        color: #e7e7e7;
+
+        &:first-child {
+          border-radius: 0.5em 0.5em 0 0;
+        }
+
+        &:last-child {
+          border-radius: 0 0 0.5em 0.5em;
+        }
+
         &:hover {
-          background-color: #4b465a;
-          color: #d5d5d5;
           cursor: pointer;
+          background-color: #6656a1;
+          background-color: #625593;
         }
       }
     }

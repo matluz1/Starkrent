@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useAccount } from '@starknet-react/core';
+import Image from 'next/image';
 import Blockies from 'react-blockies';
 import styles from '../../styles/Profile.module.scss';
 import NftCard from '../../components/nftCard';
@@ -49,7 +50,15 @@ function MyListbox() {
   return (
     <Listbox value={selectedPerson} onChange={setSelectedPerson}>
       <div className={styles.listboxWrapper}>
-        <Listbox.Button className={styles.listboxButton}>{selectedPerson.name}</Listbox.Button>
+        <Listbox.Button className={styles.listboxButton}>
+          <span>{selectedPerson.name}</span>
+          <Image
+              src="/chevron.svg"
+              alt="Listbox arrow"
+              width={12}
+              height={12}
+            />
+        </Listbox.Button>
         <Listbox.Options className={styles.listboxOptions}>
           {category.map((category) => (
             <Listbox.Option
