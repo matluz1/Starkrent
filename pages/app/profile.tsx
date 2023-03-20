@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, Dispatch } from 'react';
 import { useAccount } from '@starknet-react/core';
 import Image from 'next/image';
 import Blockies from 'react-blockies';
@@ -13,7 +13,13 @@ interface NftInfo {
   metadata: any;
 }
 
-const category = [
+interface Category {
+  id: number,
+  name: string,
+  unavailable: boolean
+}
+
+const categories = [
   { id: 1, name: 'Rented', unavailable: false },
   { id: 2, name: 'Owned', unavailable: false },
 ];
@@ -44,8 +50,12 @@ function getNftCards(nftInfoArray: NftInfo[]) {
   ))}</div>;
 }
 
-function MyListbox() {
-  const [selectedPerson, setSelectedPerson] = useState(category[0])
+interface MyListboxProps {
+  categories: Category[],
+  selectedPerson: Category,
+  setSelectedPerson: Dispatch<Category>
+}
+function MyListbox({categories, selectedPerson, setSelectedPerson} : MyListboxProps) {
 
   return (
     <Listbox value={selectedPerson} onChange={setSelectedPerson}>
@@ -60,7 +70,7 @@ function MyListbox() {
             />
         </Listbox.Button>
         <Listbox.Options className={styles.listboxOptions}>
-          {category.map((category) => (
+          {categories.map((category) => (
             <Listbox.Option
               key={category.id}
               value={category}
@@ -80,6 +90,7 @@ export default function Profile() {
 
   const [nftInfoArray, setNftInfoArray] = useState<NftInfo[]>([]);
   const [isLoading, setIsLoading] = useState(true);
+  const [selectedPerson, setSelectedPerson] = useState(categories[0]);
 
   async function fetchAsync() {
     const nftInfoArray = await getUserRents(userAddress || '');
@@ -108,7 +119,8 @@ export default function Profile() {
       {userAddress && getProfileContent(userAddress)}
       {isLoading && userStatus == 'connected' && getLoading()}
       {!isLoading && userStatus == 'connected' && getNftCards(nftInfoArray)}
-      <MyListbox />
+      <MyListbox categories={categories} selectedPerson={selectedPerson} setSelectedPerson={setSelectedPerson} />
+      {selectedPerson.name}
     </section>
   );
 }
