@@ -20,44 +20,4 @@
     grid-template-columns: repeat(auto-fit, minmax(0, max-content));
     gap: 3em;
   }
-
-  .listboxWrapper {
-    width: 12em;
-
-    .listboxButton {
-      width: 100%;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-top: 2em;
-      padding: 1em;
-      text-align: left;
-      background-color: #272336;
-      color: #bcb8cd;
-      border-radius: 0.5em;
-    }
-  
-    .listboxOptions {
-  
-      li {
-        padding: 1em;
-        background-color: #4e4864;
-        color: #e7e7e7;
-
-        &:first-child {
-          border-radius: 0.5em 0.5em 0 0;
-        }
-
-        &:last-child {
-          border-radius: 0 0 0.5em 0.5em;
-        }
-
-        &:hover {
-          cursor: pointer;
-          background-color: #6656a1;
-          background-color: #625593;
-        }
-      }
-    }
-  }
 }

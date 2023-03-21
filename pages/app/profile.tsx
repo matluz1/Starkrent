@@ -1,22 +1,15 @@
 import { useState, useEffect, Dispatch } from 'react';
 import { useAccount } from '@starknet-react/core';
-import Image from 'next/image';
 import Blockies from 'react-blockies';
 import styles from '../../styles/Profile.module.scss';
 import NftCard from '../../components/nftCard';
+import Listbox from '../../components/listbox';
 import { getUserRents, getMetadata } from '../../utils/readBlockchainInfo';
 import { IndexedRentContract } from '../../utils/starkrentInterfaces';
-import { Listbox } from '@headlessui/react';
 
 interface NftInfo {
   rentInfo: IndexedRentContract;
   metadata: any;
-}
-
-interface Category {
-  id: number,
-  name: string,
-  unavailable: boolean
 }
 
 const categories = [
@@ -48,41 +41,6 @@ function getNftCards(nftInfoArray: NftInfo[]) {
       fullImage={false}
     />
   ))}</div>;
-}
-
-interface MyListboxProps {
-  categories: Category[],
-  selectedPerson: Category,
-  setSelectedPerson: Dispatch<Category>
-}
-function MyListbox({categories, selectedPerson, setSelectedPerson} : MyListboxProps) {
-
-  return (
-    <Listbox value={selectedPerson} onChange={setSelectedPerson}>
-      <div className={styles.listboxWrapper}>
-        <Listbox.Button className={styles.listboxButton}>
-          <span>{selectedPerson.name}</span>
-          <Image
-              src="/chevron.svg"
-              alt="Listbox arrow"
-              width={12}
-              height={12}
-            />
-        </Listbox.Button>
-        <Listbox.Options className={styles.listboxOptions}>
-          {categories.map((category) => (
-            <Listbox.Option
-              key={category.id}
-              value={category}
-              disabled={category.unavailable}
-            >
-              {category.name}
-            </Listbox.Option>
-          ))}
-        </Listbox.Options>
-      </div>
-    </Listbox>
-  )
 }
 
 export default function Profile() {
@@ -119,7 +77,7 @@ export default function Profile() {
       {userAddress && getProfileContent(userAddress)}
       {isLoading && userStatus == 'connected' && getLoading()}
       {!isLoading && userStatus == 'connected' && getNftCards(nftInfoArray)}
-      <MyListbox categories={categories} selectedPerson={selectedPerson} setSelectedPerson={setSelectedPerson} />
+      <Listbox categories={categories} selectedPerson={selectedPerson} setSelectedPerson={setSelectedPerson} />
       {selectedPerson.name}
     </section>
   );
