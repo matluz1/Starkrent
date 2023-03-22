@@ -23,8 +23,8 @@ body {
 }
 
 main {
-  padding: 2rem;
-  margin-top: 1rem;
+  padding: 2em;
+  margin-top: 1em;
 }
 
 code {
@@ -115,6 +115,6 @@ li {
 
 @media (max-width: 1930px) {
   html {
-    font-size: 0.9rem;
+    font-size: 0.9em;
   }
 }
