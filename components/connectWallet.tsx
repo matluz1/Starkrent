@@ -3,7 +3,6 @@ import { useConnectors } from '@starknet-react/core';
 import Image from 'next/image';
 
 const buttonStyle = {
-  marginLeft: 'auto',
   color: '#2C354E',
   backgroundColor: '#FFF',
   borderRadius: '15rem',

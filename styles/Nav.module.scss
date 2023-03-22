@@ -1,5 +1,4 @@
 .nav {
-  background-color: #3f3958;
   padding: 2rem;
 
   ul {
@@ -16,14 +15,9 @@
       &.active {
         border-bottom: 2px solid #8983d2;
       }
-    }
-
-    li:first-child {
-      margin-right: auto;
-      width: 10.4rem;
 
       a {
-        width: min-content;
+        margin-top: 2px;
       }
     }
   }
