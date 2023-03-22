@@ -25,15 +25,10 @@ function getLoading() {
   return <h1>loading</h1>;
 }
 
-function getProfileContent(userAddress: string) {
-  return <div className={styles.blockiesWrapper}>
-    <Blockies seed={userAddress} className={styles.blockies} scale={15} />
-    <h1>{'0x' + userAddress.slice(2, 6) + '...' + userAddress.slice(-4)}</h1>
-  </div>
-}
-
-function getNftCards(nftInfoArray: NftInfo[]) {
-  return <div className={styles.collectionItemWrapper}> {nftInfoArray.map((element) => (
+function getNftCards(nftInfoArray: NftInfo[], category: string) {
+  let nftCards;
+  if (category === "Rented") {
+  nftCards = <div className={styles.collectionItemWrapper}> {nftInfoArray.map((element) => (
     <NftCard
       key={element.rentInfo.index}
       metadata={element.metadata}
@@ -41,6 +36,9 @@ function getNftCards(nftInfoArray: NftInfo[]) {
       fullImage={false}
     />
   ))}</div>;
+  } 
+
+  return nftCards;
 }
 
 export default function Profile() {
@@ -49,6 +47,14 @@ export default function Profile() {
   const [nftInfoArray, setNftInfoArray] = useState<NftInfo[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [selectedPerson, setSelectedPerson] = useState(categories[0]);
+
+  function getProfileContent(userAddress: string) {
+    return <div className={styles.blockiesWrapper}>
+      <Blockies seed={userAddress} className={styles.blockies} scale={15} />
+      <h1>{'0x' + userAddress.slice(2, 6) + '...' + userAddress.slice(-4)}</h1>
+      <Listbox categories={categories} selectedPerson={selectedPerson} setSelectedPerson={setSelectedPerson} />
+    </div>
+  }
 
   async function fetchAsync() {
     const nftInfoArray = await getUserRents(userAddress || '');
@@ -76,9 +82,7 @@ export default function Profile() {
       {userStatus == 'disconnected' && getConnectWallet()}
       {userAddress && getProfileContent(userAddress)}
       {isLoading && userStatus == 'connected' && getLoading()}
-      {!isLoading && userStatus == 'connected' && getNftCards(nftInfoArray)}
-      <Listbox categories={categories} selectedPerson={selectedPerson} setSelectedPerson={setSelectedPerson} />
-      {selectedPerson.name}
+      {!isLoading && userStatus == 'connected' && getNftCards(nftInfoArray, selectedPerson.name)}
     </section>
   );
 }
