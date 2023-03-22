@@ -15,6 +15,9 @@
   }
 
   .listboxOptions {
+    position: absolute;
+    z-index: 1;
+    width: 12em;
 
     li {
       padding: 1em;

@@ -25,6 +25,13 @@ function getLoading() {
   return <h1>loading</h1>;
 }
 
+function getProfileContent(userAddress: string) {
+  return <div className={styles.blockiesWrapper}>
+    <Blockies seed={userAddress} className={styles.blockies} scale={15} />
+    <h1>{'0x' + userAddress.slice(2, 6) + '...' + userAddress.slice(-4)}</h1>
+  </div>
+}
+
 function getNftCards(nftInfoArray: NftInfo[], category: string) {
   let nftCards;
   if (category === "Rented") {
@@ -48,12 +55,8 @@ export default function Profile() {
   const [isLoading, setIsLoading] = useState(true);
   const [selectedPerson, setSelectedPerson] = useState(categories[0]);
 
-  function getProfileContent(userAddress: string) {
-    return <div className={styles.blockiesWrapper}>
-      <Blockies seed={userAddress} className={styles.blockies} scale={15} />
-      <h1>{'0x' + userAddress.slice(2, 6) + '...' + userAddress.slice(-4)}</h1>
-      <Listbox categories={categories} selectedPerson={selectedPerson} setSelectedPerson={setSelectedPerson} />
-    </div>
+  function getMenu() {
+    return <Listbox categories={categories} selectedPerson={selectedPerson} setSelectedPerson={setSelectedPerson} />
   }
 
   async function fetchAsync() {
@@ -80,7 +83,7 @@ export default function Profile() {
   return (
     <section className={styles.profile}>
       {userStatus == 'disconnected' && getConnectWallet()}
-      {userAddress && getProfileContent(userAddress)}
+      {userAddress && [getProfileContent(userAddress), getMenu()]}
       {isLoading && userStatus == 'connected' && getLoading()}
       {!isLoading && userStatus == 'connected' && getNftCards(nftInfoArray, selectedPerson.name)}
     </section>
