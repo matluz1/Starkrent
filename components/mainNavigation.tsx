@@ -8,17 +8,15 @@ export default function MainNavigation() {
   const router = useRouter();
 
   return (
-    <>
-      <li>
-        <Link href="/">
-          <Image
-            src="/logo.svg"
-            alt="Starkrent lion logo"
-            width={65}
-            height={65}
-          />
-        </Link>
-      </li>
+    <section className={styles.navigationWrapper}>
+      <Link href="/">
+        <Image
+          src="/logo.svg"
+          alt="Starkrent lion logo"
+          width={65}
+          height={65}
+        />
+      </Link>
       <nav className={styles.nav}>
         <ul>
           <li
@@ -42,6 +40,6 @@ export default function MainNavigation() {
         </ul>
       </nav>
       <ConnectWallet />
-    </>
+    </section>
   );
 }

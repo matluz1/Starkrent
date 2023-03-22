@@ -1,24 +1,36 @@
-.nav {
-  padding: 2rem;
+.navigationWrapper {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 2em;
 
-  ul {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 2rem;
-
-    li {
-      font-size: 1.2rem;
-      padding: 0 0.2rem 0.2rem 0.2rem;
-      border-bottom: 2px solid transparent;
-
-      &.active {
-        border-bottom: 2px solid #8983d2;
-      }
-
-      a {
-        margin-top: 2px;
+  .nav {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+  
+    ul {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 2rem;
+  
+      li {
+        font-size: 1.2rem;
+        padding: 0 0.2rem 0.2rem 0.2rem;
+        border-bottom: 2px solid transparent;
+  
+        &.active {
+          border-bottom: 2px solid #8983d2;
+        }
+  
+        a {
+          margin-top: 2px;
+        }
       }
     }
   }
+
 }
