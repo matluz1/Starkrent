@@ -11,16 +11,16 @@ interface Category {
 
 interface MyListboxProps {
   categories: Category[],
-  selectedPerson: Category,
-  setSelectedPerson: Dispatch<Category>
+  selectedCategory: Category,
+  setSelectedCategory: Dispatch<Category>
 }
-export default function MyListbox({categories, selectedPerson, setSelectedPerson} : MyListboxProps) {
+export default function MyListbox({categories, selectedCategory, setSelectedCategory} : MyListboxProps) {
 
   return (
-    <Listbox value={selectedPerson} onChange={setSelectedPerson}>
+    <Listbox value={selectedCategory} onChange={setSelectedCategory}>
       <div className={styles.listboxWrapper}>
         <Listbox.Button className={styles.listboxButton}>
-          <span>{selectedPerson.name}</span>
+          <span>{selectedCategory.name}</span>
           <Image
               src="/chevron.svg"
               alt="Listbox arrow"

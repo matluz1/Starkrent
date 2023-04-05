@@ -53,10 +53,10 @@ export default function Profile() {
 
   const [nftInfoArray, setNftInfoArray] = useState<NftInfo[]>([]);
   const [isLoading, setIsLoading] = useState(true);
-  const [selectedPerson, setSelectedPerson] = useState(categories[0]);
+  const [selectedCategory, setSelectedCategory] = useState(categories[0]);
 
   function getMenu() {
-    return <Listbox categories={categories} selectedPerson={selectedPerson} setSelectedPerson={setSelectedPerson} />
+    return <Listbox categories={categories} selectedCategory={selectedCategory} setSelectedCategory={setSelectedCategory} />
   }
 
   async function fetchAsync() {
@@ -85,7 +85,7 @@ export default function Profile() {
       {userStatus == 'disconnected' && getConnectWallet()}
       {userAddress && [getProfileContent(userAddress), getMenu()]}
       {isLoading && userStatus == 'connected' && getLoading()}
-      {!isLoading && userStatus == 'connected' && getNftCards(nftInfoArray, selectedPerson.name)}
+      {!isLoading && userStatus == 'connected' && getNftCards(nftInfoArray, selectedCategory.name)}
     </section>
   );
 }
