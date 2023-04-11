@@ -86,6 +86,14 @@ export async function getUserRents(userAddress: string) {
   return rents;
 }
 
+export async function getUserCollectionBalance(userAddress: string, collectionAddress: string) {
+  const contract = await getContract(collectionAddress);
+  const response = await contract.call('balanceOf', [
+    userAddress,
+  ]);
+  return response;
+}
+
 function getProcessedAddress(address: string) {
   let processedAddress = address;
   if (address.charAt(2) === '0') {
