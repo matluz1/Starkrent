@@ -86,12 +86,10 @@ export async function getUserRents(userAddress: string) {
   return rents;
 }
 
-export async function getUserCollectionBalance(userAddress: string, collectionAddress: string) {
-  const contract = await getContract(collectionAddress);
-  const response = await contract.call('balanceOf', [
-    userAddress,
-  ]);
-  return response;
+export async function getUserAssetsFromCollection(collectionAddress: string, userAddress: string) {
+  const aspectEndpoint = `https://api-testnet.aspect.co/api/v0/assets?contract_address=${collectionAddress}&owner_address=${userAddress}`
+  const assets = await axios.get(aspectEndpoint);
+  return assets.data;
 }
 
 function getProcessedAddress(address: string) {
