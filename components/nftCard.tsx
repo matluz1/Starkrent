@@ -4,16 +4,11 @@ import styles from '../styles/NftCard.module.scss';
 import { useAccount } from '@starknet-react/core';
 import { useConnectors } from '@starknet-react/core';
 import {
+  Metadata,
   IndexedOfferContract,
   IndexedRentContract,
 } from '../utils/starkrentInterfaces';
 import { getRentExecute } from '../utils/writeBlockchainInfo';
-
-interface Metadata {
-  name: string;
-  image: string;
-  description: string;
-}
 
 interface Props {
   metadata: Metadata;

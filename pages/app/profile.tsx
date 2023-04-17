@@ -5,7 +5,7 @@ import styles from '../../styles/Profile.module.scss';
 import NftCard from '../../components/nftCard';
 import Listbox from '../../components/listbox';
 import { getUserRents, getMetadata } from '../../utils/readBlockchainInfo';
-import { IndexedRentContract } from '../../utils/starkrentInterfaces';
+import { Metadata, IndexedRentContract } from '../../utils/starkrentInterfaces';
 import { getUserAssetsFromCollection } from '../../utils/readBlockchainInfo';
 
 interface NftInfo {
@@ -18,13 +18,6 @@ interface OwnedNft {
   collection: string;
   tokenId: string;
   metadata: any;
-}
-
-interface Metadata {
-  name: string;
-  image: string;
-  description: string;
-  attributes: any;
 }
 
 const categories = [

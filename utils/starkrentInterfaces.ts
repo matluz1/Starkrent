@@ -1,3 +1,10 @@
+export interface Metadata {
+  name: string;
+  image: string;
+  description: string;
+  attributes: any;
+}
+
 export interface OfferContract {
   owner: string;
   collection: string;
