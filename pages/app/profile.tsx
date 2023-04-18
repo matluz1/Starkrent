@@ -91,6 +91,10 @@ export default function Profile() {
     const collection = "0x0783a9097b26eae0586373b2ce0ed3529ddc44069d1e0fbc4f66d42b69d6850d"; //starkid
     const userAssets = await getUserAssetsFromCollection(collection, userAddress || '');
     const ownedNfts = userAssets.assets.map((element: any) => {
+      const isRented = nftInfoArray.some(secondelement => element.token_id === secondelement.offer.tokenId);
+      if (isRented) {
+        return;
+      }
       const metadata: Metadata = {
         name: element.name,
         image: element.image_small_url_copy,
@@ -98,12 +102,13 @@ export default function Profile() {
         attributes: element.attributes
       }
       return { 
-        owner: element.owner.accountAddress,
+        owner: element.owner.account_address,
         collection: element.contract.contract_address,
         tokenId: element.token_id,
         metadata
       }
-    } )
+    } ).filter(Boolean);
+    console.log(ownedNfts);
     setNftInfoArray(rentalAndMetadataArray);
     setOwnedNftArray(ownedNfts);
     setIsLoading(false);
