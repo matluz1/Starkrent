@@ -12,7 +12,7 @@ export default function MainNavigation() {
       <Link href="/">
         <Image
           src="/logo.svg"
-          alt="Starkrent lion logo"
+          alt="SwordRent lion logo"
           width={65}
           height={65}
         />

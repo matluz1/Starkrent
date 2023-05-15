@@ -16,14 +16,14 @@ export default function App({ Component, pageProps }: AppProps) {
     return router.pathname === '/' ? (
       <>
         <Head>
-          <title>Starkrent</title>
+          <title>SwordRent</title>
         </Head>
         <Component {...pageProps} />
       </>
     ) : (
       <StarknetConfig connectors={connectors}>
         <Head>
-          <title>Starkrent</title>
+          <title>SwordRent</title>
         </Head>
         <Navigation />
         <main>

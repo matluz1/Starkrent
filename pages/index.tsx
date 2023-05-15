@@ -12,13 +12,13 @@ export default function Home() {
           <Image
             className={styles.logo}
             src="/logo.svg"
-            alt="Starkrent lion logo"
+            alt="SwordRent lion logo"
             width={150}
             height={150}
           />
           <Image
-            src="/starkrent.svg"
-            alt="Starkrent logotype"
+            src="/SwordRent.svg"
+            alt="SwordRent logotype"
             width={500}
             height={50}
           />
