@@ -17,7 +17,7 @@ export default function Home() {
             height={150}
           />
           <Image
-            src="/SwordRent.svg"
+            src="/swordrent.svg"
             alt="SwordRent logotype"
             width={500}
             height={50}
