@@ -28,6 +28,23 @@ namespace INFTRental {
     ) {
     }
 
+    func listRents(
+        offset: felt,
+        limit: felt,
+        filter_by_collection: felt,
+        filter_by_owner: felt,
+        inverse_order: felt,
+    ) -> (rents_len: felt, rents: RentStruct*) {
+    }
+
+    func getRent(index: felt) -> (rent: RentStruct) {
+    }
+
+    func getRentsByTokenId(collection: felt, tokenId: Uint256) -> (
+        rents_len: felt, rents: RentStruct*
+    ) {
+    }
+
     func addCollection(address: felt) -> (index: felt) {
     }
 

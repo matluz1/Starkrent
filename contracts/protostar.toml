@@ -8,5 +8,5 @@ cairo-path = ["lib/cairo-contracts/src/"]
 
 [contracts]
 main = [
-    "./src/main.cairo",
+    "./src/NFTRental.cairo",
 ]
